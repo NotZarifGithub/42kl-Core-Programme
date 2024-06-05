@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:33:27 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/05 14:34:07 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/05 14:57:45 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	ft_isalpha(char *str)
 	while (str[i] != '\0')
 	{
 		if (str[i] < 'A' || (str[i] > 'Z' && str[i] < 'a') || str[i] > 'z')
-			return (1);
+			return (0);
 		i++;
 	}
-	return (0);
+	return (1);
 }
