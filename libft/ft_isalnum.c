@@ -19,18 +19,16 @@ int	ft_isalnum(int c)
 	return (0);
 }
 
-#include <stdio.h>
-
-/*int main (void)
+/*int main(void)
 {
 	char alphanum;
 	
 	alphanum = 'K';
 	if (!ft_isalnum(alphanum))
-		printf("%c is not an alphanumeric character.", alhpanum)
+		printf("%c is not an alphanumeric character.", alphanum);
 	else
 	{
-	printf("%c is an alphanumeric character.", alphanum)	
+	printf("%c is an alphanumeric character.", alphanum);
 	}
 	return (0);
 }*/
