@@ -10,9 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(char l)
+int	ft_isprint(int c)
 {
-	if (l >= ' ' && l <= '~')
+	if (c > 31 && c < 127)
 		return (1);
 	return (0);
 }
+
+/*int main(void)
+{
+	char printable;
+
+	printable = 'k';
+	if (ft_isprint(printable))
+	{
+		printf("%c is a printable character.", printable);
+	}
+	else
+	{
+		printf("%c is not a printable character.", printable);
+	}
+	return (0);
+}*/
