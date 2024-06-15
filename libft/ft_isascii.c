@@ -10,9 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int l)
+int	ft_isascii(int c)
 {
-	if (l >= 0 && l <= 127)
+	if (c >= 0 && c <= 127)
 		return (1);
+	return (0);
+}
+
+int main(void)
+{
+	char ascii;
+
+	ascii = 'K';
+	if (ft_isascii(ascii))
+	{
+		printf("%c is an ascii character.", ascii);
+	}
+	else
+	{
+		printf("%c is not an ascii character.", ascii);
+	}
 	return (0);
 }
