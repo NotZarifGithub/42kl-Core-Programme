@@ -10,16 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(char *str)
+int	ft_isdigit(int c)
 {
-	int	i;
+	if (c > 47 && c < 58)
+		return (1);
+	return (0);
+}
 
-	i = 0;
-	while (str[i] != '\0')
+int main(void)
+{
+	int digit;
+
+	digit = '1';
+	if (ft_isdigit(digit))
 	{
-		if (str[i] < '0' || str[i] > '9')
-			return (0);
-		i++;
+		printf("%c is a digit.", digit);
 	}
-	return (1);
+	else
+	{
+		printf("%c is not a digit.", digit);
+	}
+	return (0);
 }
