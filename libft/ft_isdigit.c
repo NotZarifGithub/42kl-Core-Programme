@@ -17,7 +17,7 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-int main(void)
+/*int main(void)
 {
 	int digit;
 
@@ -31,4 +31,4 @@ int main(void)
 		printf("%c is not a digit.", digit);
 	}
 	return (0);
-}
+}*/
