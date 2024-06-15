@@ -17,7 +17,7 @@ int	ft_isascii(int c)
 	return (0);
 }
 
-int main(void)
+/*int main(void)
 {
 	char ascii;
 
@@ -31,4 +31,4 @@ int main(void)
 		printf("%c is not an ascii character.", ascii);
 	}
 	return (0);
-}
+}*/
