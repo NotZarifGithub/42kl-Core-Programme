@@ -10,16 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(char *str)
+int	ft_isalpha(int c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] < 'A' || (str[i] > 'Z' && str[i] < 'a') || str[i] > 'z')
-			return (0);
-		i++;
-	}
-	return (1);
+	if ((c > 64 && c < 91) || (c > 96 && c < 123))
+		return (1);
+	return (0);
 }
+
+/*int main(void)
+{
+	char alphabet;
+	
+	alphabet = 'K';
+	if (ft_isalpha(alphabet))
+	{
+		printf("%c is an alphabet.", alphabet);
+	}
+	else
+	{
+		printf("%c is not an alphabet.", alphabet);
+	}
+	return (0);
+}*/
