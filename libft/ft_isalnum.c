@@ -10,18 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(char *str)
+int	ft_isalnum(int c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (!((str[i] >= 'A' && str[i] <= 'Z')
-				|| (str[i] >= 'a' && str[i] <= 'z')
-				|| (str[i] >= '0' && str[i] <= '9')))
-			return (0);
-		i++;
-	}
-	return (1);
+	if ((c > 64 && c < 91)
+		|| (c > 97 && c < 123)
+		|| (c > 47 && c < 58))
+		return (1);
+	return (0);
 }
+
+#include <stdio.h>
+
+/*int main (void)
+{
+	char alphanum;
+	
+	alphanum = 'K';
+	if (!ft_isalnum(alphanum))
+		printf("%c is not an alphanumeric character.", alhpanum)
+	else
+	{
+	printf("%c is an alphanumeric character.", alphanum)	
+	}
+	return (0);
+}*/
