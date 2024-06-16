@@ -27,14 +27,14 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-int main(void)
+/*int main(void)
 {
-	char dest1[] = "";
+	char dest1[20] = "";
 	char src1[] = "I love Kanye West.";
-	int len;
+	int len = 5;
 
 	ft_memcpy(dest1, src1, len);
 	dest1[len] = '\0';
 	printf("%s", dest1);
 	return (0);
-}
+}*/

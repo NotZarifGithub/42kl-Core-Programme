@@ -33,3 +33,14 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
+
+/*int main(void)
+{
+	char str1[] = "I love Kanye West.";	
+	const char str2[] = "testing testing";
+
+	printf("oldstring: %s \n", str1);
+	ft_memmove(str1, str2, 5);
+	printf("newstring: %s \n", str1);
+	return (0);
+}*/
