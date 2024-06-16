@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_bzero(void *str, size_t n)
+void	ft_bzero(void *str, size_t len)
 {
 	ft_memset(s, 0, n);
 }
