@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*memchr(const void *str, int cl, size_t n)
+void	*ft_memchr(const void *str, int c, size_t n)
 {
 	unsigned char	*str_ptr;
-	int				i;
+	size_t				i;
 
 	str_ptr = (unsigned char *)str;
 	i = 0;
@@ -25,3 +25,15 @@ void	*memchr(const void *str, int cl, size_t n)
 	}
 	return (NULL);
 }
+
+/*int main(void)
+{
+	char str1[] = "I love Kanye West.";
+	char i = 'K';
+
+	char *address;
+
+	address = ft_memchr(str1, i, strlen(str1));
+	printf("Pointed char is %c, string from char %c is %s", i, i, address);
+	return (0);
+}*/
