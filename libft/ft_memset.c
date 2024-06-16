@@ -23,3 +23,11 @@ void	*ft_memset(void *str, int c, size_t len)
 	}
 	return (str);
 }
+
+/*int main(void)
+{
+	char str1[] = "I love Kanye West."; 
+	ft_memset(str1, (int)'#', 5);
+	printf("%s\n", str1);
+	return (0);
+}*/
