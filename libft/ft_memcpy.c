@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	char		*dest_ptr;
 	const char	*src_ptr;
-	int			i;
+	size_t			i;
 
 	dest_ptr = (char *)dest;
 	src_ptr = (const char *)src;
@@ -25,4 +25,16 @@ void	*memcpy(void *dest, const void *src, size_t n)
 		i++;
 	}
 	return (dest);
+}
+
+int main(void)
+{
+	char dest1[] = "";
+	char src1[] = "I love Kanye West.";
+	int len;
+
+	ft_memcpy(dest1, src1, len);
+	dest1[len] = '\0';
+	printf("%s", dest1);
+	return (0);
 }
