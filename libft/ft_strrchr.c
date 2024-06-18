@@ -10,21 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	strlen(char *str)
+char	*ft_strrchr(const char *str, int c)
 {
 	int	i;
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*strrchr(const char *str, int c)
-{
-	int	i;
-
-	i = strlen(str);
+	i = ft_strlen((char *)str);
 	while (i >= 0)
 	{
 		if (str[i] == c)
@@ -33,3 +23,16 @@ char	*strrchr(const char *str, int c)
 	}
 	return (NULL);
 }
+
+/*int main(void)
+{
+	const char *str1;
+	char *address;
+	int c;
+
+	str1 = "I love Kanye West.";
+	c = 'e';
+	address = ft_strrchr(str1, c);
+	printf("%s", address);
+	return (0);
+}*/
