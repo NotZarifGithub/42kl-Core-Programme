@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
 	int	i;
 
@@ -24,11 +24,11 @@ int	ft_strlen(char *str)
 
 /*int main(void)
 {
-	char *str;
+	const char *str;
 	int len;
 	
 	str = "I love Kanye West.";
-	i =	ft_strlen(str);
-	printf("The length of the string %s is %d", str, i);
+	len =	ft_strlen(str);
+	printf("The length of the string %s is %d", str, len);
 	return (0);
 }*/
