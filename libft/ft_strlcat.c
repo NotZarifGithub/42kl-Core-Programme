@@ -10,18 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	strlcat(char *dest, const char *src, size_t n)
+size_t	ft_strlcat(char *dest, const char *src, size_t n)
 {
 	size_t	i;
 	size_t	len;
 	size_t	remaining;
 
 	i = 0;
-	len = 0;
-	while (dest[len] != '\0')
-	{
-		len++;
-	}
+	len = ft_strlen(dest);	
 	remaining = n - len - 1;
 	while (remaining > 0 && src[i] != '\0')
 	{
@@ -32,3 +28,17 @@ size_t	strlcat(char *dest, const char *src, size_t n)
 	dest[len + i] = '\0';
 	return (len + i);
 }
+
+/*int main(void)
+{
+	char dest1[20] = "I love Kanye West.";
+	const char *src1;
+	size_t n;
+
+	src1 = "I truly do.";
+	n = 5;
+	printf("String before: %s\n", dest1);
+	ft_strlcat(dest1, src1, n);
+	printf("String after: %s\n", dest1);
+	return (0);
+}*/
