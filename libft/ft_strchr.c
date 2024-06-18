@@ -23,3 +23,16 @@ char	*ft_strchr(const char *str, int c)
 	}
 	return (NULL);
 }
+
+/*int main(void)
+{
+	const char *str1;
+	unsigned char c;
+	char *address;
+
+	str1 = "I love Kanye West.";
+	c = 'K';
+	address = ft_strchr(str1, c);
+	printf("%s", address);
+	return (0);
+}*/
