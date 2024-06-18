@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t strlcpy(char *dest,const char *src, size_t n)
+size_t ft_strlcpy(char *dest,const char *src, size_t n)
 {
 	size_t	i;
 	size_t src_len;
@@ -27,3 +27,17 @@ size_t strlcpy(char *dest,const char *src, size_t n)
 		src_len++;
 	return (src_len);
 }
+
+/*int main(void)
+{
+	char dest1[20];
+	const char *src1;
+	size_t i;
+
+	src1 = "I truly love Kanye West.";	
+	i = 5;
+	printf("String before: %s\n", src1);
+	ft_strlcpy(dest1, src1, i);
+	printf("String after: %s\n", dest1);
+	return (0);
+}*/
