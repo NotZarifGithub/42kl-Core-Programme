@@ -25,3 +25,22 @@ int	ft_strncmp(const char *str1, const char *str2, size_t n )
 	}
 	return (0);
 }
+
+/*int main(void)
+{
+	const char *str1, *str2;
+	size_t i;
+	char value;
+
+	str1 = "I love Kanye West.";
+	str2 = "i love Kanye West.";
+	i = 5;
+	value = ft_strncmp(str1, str2, i);
+	if (value < 0)
+		printf("str1 > str2");
+	else if (value > 0)
+		printf("str1 < str2");
+	else
+		printf("str1 == str2");
+	return (0);
+}*/
