@@ -16,3 +16,13 @@ char	ft_tolower(char l)
 		l += 32;
 	return ((char)(l));
 }
+
+/*int main(void)
+{
+	char char_before, char_after;
+
+	char_before = 'P';
+	char_after = ft_tolower(char_before);
+	printf("Before: %c , After: %c", char_before, char_after);
+	return (0);
+}*/
