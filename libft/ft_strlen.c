@@ -21,3 +21,14 @@ int	ft_strlen(char *str)
 	}
 	return (i);
 }
+
+/*int main(void)
+{
+	char *str;
+	int len;
+	
+	str = "I love Kanye West.";
+	i =	ft_strlen(str);
+	printf("The length of the string %s is %d", str, i);
+	return (0);
+}*/
