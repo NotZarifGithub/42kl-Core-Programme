@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:42:53 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/19 14:03:04 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/19 14:08:46 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strnstr(const char *hay, const char *needle, size_t n)
 	return (NULL);
 }
 
-int main(void)
+/*int main(void)
 {
 	const char *hay1;
 	const char *needle1;
@@ -44,4 +44,4 @@ int main(void)
 	if (result1 != NULL)
 		printf("Needle found: %s\n", result1);
 	return (0);
-}
+}*/
