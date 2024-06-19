@@ -6,11 +6,11 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 18:27:33 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/12 19:13:13 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/19 16:26:54 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char *s1, char const *s2)
 {
 	char	*str;
 	size_t	s1_len;	
@@ -23,7 +23,22 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	str = malloc(s1_len + s2_len + 1);
 	if (!str)
 		return (NULL);
-	strlcpy(str, s1, s1_len + 1);
-	strlcat(str, s2, s1_len + s2_len + 1);
+	ft_strlcpy(str, s1, s1_len + 1);
+	ft_strlcat(str, s2, s1_len + s2_len + 1);
 	return (str);
 }
+
+/*int main (void)
+{
+	const char *str1;
+	const char *str2;
+	char *joined_str;
+
+	str1 = "I love Kanye West";
+	str2 = "I truly do";
+	joined_str = ft_strjoin(str1, str2);
+	printf("First string: %s\n", str1);
+	printf("Second string: %s\n", str2);
+	printf("Joined string: %s\n", joined_str);
+	return (0);
+}*/
