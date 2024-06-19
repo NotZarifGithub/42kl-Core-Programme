@@ -6,15 +6,15 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 18:06:57 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/05 18:19:42 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/19 19:16:59 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	ft_tolower(char l)
+int	ft_tolower(int c)
 {
-	if (l >= 'A' && l <= 'Z')
-		l += 32;
-	return ((char)(l));
+	if (c >= 'A' && c <= 'Z')
+		c += 32;
+	return ((char)(c));
 }
 
 /*int main(void)
