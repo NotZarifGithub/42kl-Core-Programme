@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 18:53:33 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/12 16:16:54 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/19 15:28:49 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,22 @@ char	*ft_strdup(const char *str)
 	size_t	len;
 	char	*dup;
 
-	len = strlen(str);
+	len = ft_strlen(str);
 	dup = malloc(len + 1);
 	if (dup == NULL)
 		return (NULL);
-	memcpy(dup, str, len + 1);
+	ft_memcpy(dup, str, len + 1);
 	return (dup);
 }
+
+/*int main(void)
+{
+	const char *str1;
+	char *dup;
+
+	str1 = "I love Kanye West.";
+	dup = ft_strdup(str1);
+	printf("%s: %p\n", str1, (void *)str1);
+	printf("%s: %p\n", dup, (void *)dup);
+	return (0);
+}*/
