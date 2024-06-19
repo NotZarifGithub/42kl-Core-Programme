@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 18:15:49 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/13 18:18:36 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/19 19:18:30 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,17 @@ void ft_putendl_fd(char *s, int fd);
 void ft_putnbr_fd(int n, int fd);
 
 //string
-char	*ft_strchr(const char *str, int c)
-char	*ft_strrchr(const char *str, int c)
-char	ft_toupper(char l)
-char	ft_tolower(char l)
-int	ft_strncmp(const char *str1, const char *str2, size_t n )
-size_t	ft_strlen(const char *str)
-size_t ft_strlcpy(char *dest,const char *src, size_t n)
-size_t	ft_strlcat(char *dest, const char *src, size_t n)
+char	*ft_strchr(const char *str, int c);
+char	*ft_strrchr(const char *str, int c);
+int ft_toupper(int c);
+int ft_tolower(int c);
+int	ft_strncmp(const char *str1, const char *str2, size_t n );
+size_t	ft_strlen(const char *str);
+size_t ft_strlcpy(char *dest,const char *src, size_t n);
+size_t	ft_strlcat(char *dest, const char *src, size_t u);
+char	*ft_strnstr(const char *hay, const char *needle, size_t n);
+int	ft_atoi(const char *str);
+char    *ft_strdup(const char *str);
+char    *ft_substr(const char *s, unsigned int start, size_t len);
+char    *ft_strtrim(const char *s1, const char *set);
+char    *ft_strmapi(char const *s, char (*f)(unsigned int, char));
