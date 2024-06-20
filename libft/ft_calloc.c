@@ -15,9 +15,14 @@ void	*ft_calloc(size_t nitems, size_t n)
 {
 	void	*ptr;
 
+	if (nitems == 0 || n == 0)
+	{
+		nitems = 1;
+		n = 1;
+	}
 	ptr = malloc(nitems * n);
 	if (ptr == NULL)
 		return (NULL);
-	ft_memset(ptr, 0, nitems * n);
+	ft_bzero(ptr, nitems * n);
 	return (ptr);
 }

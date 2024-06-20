@@ -13,24 +13,21 @@
 
 size_t	ft_strlcat(char *dest, const char *src, size_t n)
 {
-	size_t	i;
-	size_t	len;
-	size_t	src_len;
+	size_t	srcsize;
+	size_t	destsize;
 
-	if (dest == NULL || src == NULL)
+	if (!dest || !src)
 		return (0);
-	len = ft_strlen(dest);
-	src_len = ft_strlen(src);
-	if (n <= len)
-		return (len + src_len);
-	i = 0;
-	while (i < n - len - 1 && i < src_len)
+	srcsize = ft_strlen(src);
+	destsize = ft_strlen(dest);
+	if (n < destsize)
+		return (srcsize + n);
+	else
 	{
-		dest[len + i] = src[i];
-		i++;
+		dest = dest + destsize;
+		ft_strlcpy(dest, src, n - destsize);
+		return (srcsize + destsize);
 	}
-	dest[len + i] = '\0';
-	return (len + i);
 }
 
 /*int main(void)

@@ -18,12 +18,12 @@ char	*ft_strrchr(const char *str, int c)
 	str_copy = (char *)str;
 	while (*str_copy != '\0')
 		str_copy++;
-	if (c == '\0')
+	if ((char)c == '\0')
 		return str_copy;
 	str_copy--;
 	while (str_copy >= str)
 	{
-		if (*str_copy == c)
+		if (*str_copy == (char)c)
 			return ((char *)str_copy);
 		str_copy--;
 	}
