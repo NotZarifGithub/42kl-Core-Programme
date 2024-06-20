@@ -6,9 +6,10 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 16:15:58 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/19 16:09:40 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:06:52 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {

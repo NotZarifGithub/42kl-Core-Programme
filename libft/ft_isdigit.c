@@ -6,9 +6,10 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:39:08 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/05 14:55:32 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:00:17 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 int	ft_isdigit(int c)
 {

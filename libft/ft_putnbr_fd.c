@@ -6,9 +6,10 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:09:48 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/13 17:13:09 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:09:58 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {

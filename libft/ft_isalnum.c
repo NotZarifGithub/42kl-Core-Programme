@@ -6,9 +6,10 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:58:40 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/05 15:44:33 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:08:19 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 int	ft_isalnum(int c)
 {

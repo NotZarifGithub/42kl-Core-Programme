@@ -6,9 +6,10 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:47:18 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/05 18:05:16 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:09:23 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 char	ft_toupper(char l)
 {

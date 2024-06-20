@@ -6,14 +6,15 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:02:25 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/11 15:30:57 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:08:32 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 void	*ft_memchr(const void *str, int c, size_t n)
 {
 	unsigned char	*str_ptr;
-	size_t				i;
+	size_t			i;
 
 	str_ptr = (unsigned char *)str;
 	i = 0;

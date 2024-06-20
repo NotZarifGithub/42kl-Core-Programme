@@ -6,9 +6,10 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 14:25:18 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/06 15:33:52 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:09:13 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 int	ft_strncmp(const char *str1, const char *str2, size_t n )
 {

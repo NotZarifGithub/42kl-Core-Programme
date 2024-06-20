@@ -6,9 +6,10 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 18:53:13 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/12 14:58:08 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:07:04 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 void	*ft_calloc(size_t nitems, size_t n)
 {

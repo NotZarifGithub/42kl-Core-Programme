@@ -6,12 +6,13 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:50:23 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/13 16:08:36 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:08:52 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	ft_putstr_fd(s, fd);	
+	ft_putstr_fd(s, fd);
 	write(fd, "\n", 1);
 }

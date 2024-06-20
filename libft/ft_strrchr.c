@@ -6,9 +6,10 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 12:30:34 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/06 14:23:26 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 13:59:42 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 char	*ft_strrchr(const char *str, int c)
 {

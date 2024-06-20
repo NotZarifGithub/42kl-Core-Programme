@@ -6,9 +6,10 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 16:22:57 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/05 16:47:18 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:06:03 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 int	ft_isprint(int c)
 {

@@ -6,9 +6,10 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 18:27:33 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/19 16:26:54 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:10:15 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 char	*ft_strjoin(const char *s1, char const *s2)
 {

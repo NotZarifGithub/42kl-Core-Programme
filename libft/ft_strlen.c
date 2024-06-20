@@ -6,9 +6,10 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 16:48:56 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/05 17:03:23 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:06:39 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 size_t	ft_strlen(const char *str)
 {

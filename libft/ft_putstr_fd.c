@@ -6,9 +6,11 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:24:25 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/13 15:43:17 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 13:59:13 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {

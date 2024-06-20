@@ -6,9 +6,10 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:02:12 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/11 15:20:58 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:05:52 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 void	ft_bzero(void *str, size_t len)
 {

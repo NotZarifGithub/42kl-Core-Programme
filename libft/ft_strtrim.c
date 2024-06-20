@@ -6,9 +6,10 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 12:31:19 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/19 17:54:53 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:01:23 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 char	*ft_strtrim(const char *s1, const char *set)
 {
