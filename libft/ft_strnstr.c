@@ -6,25 +6,29 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:42:53 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/20 14:10:25 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:16:47 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 char	*ft_strnstr(const char *hay, const char *needle, size_t n)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
+	size_t	needle_len;
 
-	i = 0;
-	if (needle[0] == '\0')
+	if (hay == NULL || needle == NULL)
+		return (NULL);
+	needle_len = ft_strlen(needle);
+	if (needle_len == 0)
 		return ((char *)(hay));
-	while (hay[i] != '\0' && i != n)
+	i = 0;
+	while (hay[i] != '\0' && n > i)
 	{
 		j = 0;
-		while (hay[i + j] == needle[j] && needle[j] != '\0')
+		while (j < needle_len && i + j < n && hay[i + j] == needle[j])
 			j++;
-		if (needle[j] == '\0')
+		if (needle_len == j)
 			return ((char *)(&hay[i]));
 		i++;
 	}

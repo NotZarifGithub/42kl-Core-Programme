@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 12:55:17 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/20 14:07:48 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:42:09 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -15,7 +15,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char			*str;
 	unsigned int	i;
-	int				len;
+	unsigned int	len;
 
 	i = 0;
 	len = ft_strlen(s);

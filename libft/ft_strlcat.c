@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:48:11 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/20 13:59:26 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:12:36 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -15,16 +15,19 @@ size_t	ft_strlcat(char *dest, const char *src, size_t n)
 {
 	size_t	i;
 	size_t	len;
-	size_t	remaining;
+	size_t	src_len;
 
-	i = 0;
+	if (dest == NULL || src == NULL)
+		return (0);
 	len = ft_strlen(dest);
-	remaining = n - len - 1;
-	while (remaining > 0 && src[i] != '\0')
+	src_len = ft_strlen(src);
+	if (n <= len)
+		return (len + src_len);
+	i = 0;
+	while (i < n - len - 1 && i < src_len)
 	{
 		dest[len + i] = src[i];
 		i++;
-		remaining--;
 	}
 	dest[len + i] = '\0';
 	return (len + i);

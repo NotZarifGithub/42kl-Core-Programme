@@ -6,13 +6,15 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:02:36 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/20 13:58:55 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 16:30:33 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
+	if (!dest && !src)
+		return (NULL);
 	char		*dest_ptr;
 	const char	*src_ptr;
 	size_t		i;

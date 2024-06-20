@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 16:15:58 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/20 14:06:52 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:39:05 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -20,6 +20,8 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	if (start > ft_strlen(s))
 		len = 0;
 	substring = malloc(len + 1);
+	if (!substring)
+		return (NULL);
 	if (len > ft_strlen(s) - start)
 		len = ft_strlen(s) - start;
 	ft_memcpy(substring, s + start, len);

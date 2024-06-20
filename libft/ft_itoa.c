@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 13:01:05 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/20 14:07:13 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:43:40 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -42,6 +42,7 @@ char	*ft_itoa(int n)
 	else
 	{
 		len = -1;
+		i = 0;
 		if (n < 0)
 		{
 			str[0] = '-';

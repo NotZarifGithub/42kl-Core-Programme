@@ -6,16 +6,16 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:47:18 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/20 14:09:23 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/20 16:41:29 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	ft_toupper(char l)
+int	ft_toupper(int c)
 {
-	if (l >= 'a' && l <= 'z')
-		l -= 32;
-	return ((char)(l));
+	if (c >= 'a' && c <= 'z')
+		c -= 32;
+	return (c);
 }
 
 /*int main(void)
