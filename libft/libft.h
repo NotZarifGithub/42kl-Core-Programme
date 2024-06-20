@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stddef.h>
+# include <stdint.h>
 
 /* check */
 

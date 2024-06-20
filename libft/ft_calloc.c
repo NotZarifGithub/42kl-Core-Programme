@@ -11,18 +11,23 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_calloc(size_t nitems, size_t n)
+void	*ft_calloc(size_t nitems, size_t size)
 {
 	void	*ptr;
 
-	if (nitems == 0 || n == 0)
+	if (nitems == 0 || size == 0)
 	{
-		nitems = 1;
-		n = 1;
+		ptr = malloc(1);
+		if (ptr == NULL)
+			return (NULL);
+		*(char *)ptr = 0;
+		return (ptr);
 	}
-	ptr = malloc(nitems * n);
+	if (nitems > SIZE_MAX / size)
+		return (NULL);
+	ptr = malloc(nitems * size);
 	if (ptr == NULL)
 		return (NULL);
-	ft_bzero(ptr, nitems * n);
+	ft_bzero(ptr, nitems * size);
 	return (ptr);
 }
