@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 18:53:33 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/20 14:07:36 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/21 16:46:45 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -16,8 +16,6 @@ char	*ft_strdup(const char *str)
 	size_t	len;
 	char	*dup;
 
-	if (!str)
-		return (NULL);
 	len = ft_strlen(str);
 	dup = malloc(len + 1);
 	if (dup == NULL)

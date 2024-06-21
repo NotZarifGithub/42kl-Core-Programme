@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 12:30:34 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/20 16:14:42 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:07:34 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -19,7 +19,7 @@ char	*ft_strrchr(const char *str, int c)
 	while (*str_copy != '\0')
 		str_copy++;
 	if ((char)c == '\0')
-		return str_copy;
+		return (str_copy);
 	str_copy--;
 	while (str_copy >= str)
 	{

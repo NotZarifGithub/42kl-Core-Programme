@@ -6,16 +6,17 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:40:11 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/20 17:35:02 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:48:27 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int ft_isspace(int c)
+int	ft_isspace(int c)
 {
-    if (c == ' ' || c == '\f' || c == '\n' || c == '\r' || c == '\t' || c == '\v')
-        return (1);
-    return (0);
+	if (c == ' ' || c == '\f' || c == '\n' || c == '\r'
+		|| c == '\t' || c == '\v')
+		return (1);
+	return (0);
 }
 
 int	ft_atoi(const char *str)
