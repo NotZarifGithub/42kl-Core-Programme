@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 18:15:49 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/20 13:45:50 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:19:30 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@
 # include <stdio.h>
 # include <stddef.h>
 # include <stdint.h>
+
+/* struct */
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;	
 
 /* check */
 
@@ -64,5 +72,12 @@ char	*ft_strtrim(const char *s1, const char *set);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
+
+/* linked list */
+
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
 
 #endif

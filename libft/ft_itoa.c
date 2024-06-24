@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 13:01:05 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/20 14:43:40 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/24 13:30:40 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -51,9 +51,9 @@ static char	*str_new(size_t n)
 char	*ft_itoa(int n)
 {
 	unsigned int	num;
-	int						sign;
-	int						len;
-	char					*str;
+	int				sign;
+	int				len;
+	char			*str;
 
 	sign = 0;
 	if (n < 0)
@@ -66,8 +66,8 @@ char	*ft_itoa(int n)
 	num = abs_val(n);
 	while (len--)
 	{
-		*(str + len) = 48 + nbr % 10;
-		nbr /= 10;
+		*(str + len) = 48 + num % 10;
+		num /= 10;
 	}
 	if (sign)
 		*(str) = 45;
