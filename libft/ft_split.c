@@ -6,28 +6,28 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 13:16:22 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/25 20:58:43 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/26 02:53:26 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-static size_t	ft_toklen(const char *str, char c)
+static size_t	count_token(const char *str, char c)
 {
-	size_t	tok_len;
+	size_t	count_token;
 
-	tok_len = 0;
+	count_token = 0;
 	while (*str)
 	{
 		if (*str != c)
 		{
-			++tok_len;
+			++count_token;
 			while (*str && *str != c)
 				++str;
 		}
 		else
 			++str;
 	}
-	return (tok_len);
+	return (count_token);
 }
 
 char	**ft_split(const char *str, char c)
@@ -39,7 +39,7 @@ char	**ft_split(const char *str, char c)
 	if (!str)
 		return (0);
 	i = 0;
-	split_str = malloc(sizeof(char *) * (ft_toklen(str, c) + 1));
+	split_str = malloc(sizeof(char *) * (count_token(str, c) + 1));
 	if (!split_str)
 		return (0);
 	while (*str)
@@ -63,14 +63,13 @@ char	**ft_split(const char *str, char c)
     char **words;
     char str[] = "I love Kanye West";
 
-    words = ft_split(str, ' '); // space character as delimiter
+    words = ft_split(str, ' '); 
 
     for (int i = 0; words[i]; i++)
     {
         printf("%s\n", words[i]);
     }
 
-    // Don't forget to free the memory!
     for (int i = 0; words[i]; i++)
     {
         free(words[i]);

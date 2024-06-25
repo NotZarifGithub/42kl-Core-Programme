@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 13:01:05 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/24 13:30:40 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/26 02:18:28 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -28,14 +28,10 @@ static int	num_len(int num)
 
 static long long	abs_val(long long n)
 {
-	long long	nb;
-
-	nb = 1;
 	if (n < 0)
-		nb *= -n;
+		return (-n);
 	else
-		nb *= n;
-	return (nb);
+		return (n);
 }
 
 static char	*str_new(size_t n)

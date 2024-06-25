@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:42:53 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/21 18:06:59 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/26 01:10:29 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -43,7 +43,7 @@ char	*ft_strnstr(char const *haystack, char const *needle, size_t n)
 
 	hay1 = "I love Kanye West.";
 	needle1 = "Kanye";
-	len = strlen(hay1);
+	len = ft_strlen(hay1);
 	result1 = ft_strnstr(hay1, needle1, len);
 	if (result1 != NULL)
 		printf("Needle found: %s\n", result1);

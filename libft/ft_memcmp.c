@@ -6,17 +6,19 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:05:58 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/20 14:09:44 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/25 23:26:44 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
-	const unsigned char	*str1_ptr = (const unsigned char *)str1;
-	const unsigned char	*str2_ptr = (const unsigned char *)str2;
+	const unsigned char	*str1_ptr;
+	const unsigned char	*str2_ptr;
 	size_t				i;
 
+	str1_ptr = (const unsigned char *)str1;
+	str2_ptr = (const unsigned char *)str2;
 	i = 0;
 	while (n > i)
 	{
