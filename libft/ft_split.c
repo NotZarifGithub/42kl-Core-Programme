@@ -6,57 +6,58 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 13:16:22 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/21 19:20:27 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/25 20:58:43 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-static size_t	ft_countword(char const *s, char c)
+static size_t	ft_toklen(const char *str, char c)
 {
-	size_t	count;
+	size_t	tok_len;
 
-	if (!*s)
-		return (0);
-	count = 0;
-	while (*s)
+	tok_len = 0;
+	while (*str)
 	{
-		while (*s == c)
-			s++;
-		if (*s)
-			count++;
-		while (*s != c && *s)
-			s++;
+		if (*str != c)
+		{
+			++tok_len;
+			while (*str && *str != c)
+				++str;
+		}
+		else
+			++str;
 	}
-	return (count);
+	return (tok_len);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(const char *str, char c)
 {
-	char	**lst;
-	size_t	word_len;
-	int		i;
+	char	**split_str;
+	size_t	i;
+	size_t	len;
 
-	lst = (char **)malloc((ft_countword(s, c) + 1) * sizeof(char *));
-	if (!s || !lst)
+	if (!str)
 		return (0);
 	i = 0;
-	while (*s)
+	split_str = malloc(sizeof(char *) * (ft_toklen(str, c) + 1));
+	if (!split_str)
+		return (0);
+	while (*str)
 	{
-		while (*s == c && *s)
-			s++;
-		if (*s)
+		if (*str != c)
 		{
-			if (!ft_strchr(s, c))
-				word_len = ft_strlen(s);
-			else
-				word_len = ft_strchr(s, c) - s;
-			lst[i++] = ft_substr(s, 0, word_len);
-			s += word_len;
+			len = 0;
+			while (*str && *str != c && ++len)
+				++str;
+			split_str[i++] = ft_substr(str - len, 0, len);
 		}
+		else
+			++str;
 	}
-	lst[i] = NULL;
-	return (lst);
+	split_str[i] = 0;
+	return (split_str);
 }
+
 /*int main()
 {
     char **words;
