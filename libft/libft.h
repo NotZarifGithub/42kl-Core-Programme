@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 18:15:49 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/06/24 19:19:30 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/06/25 18:04:03 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stddef.h>
 # include <stdint.h>
+# include <limits.h>
 
 /* struct */
 
@@ -79,5 +80,9 @@ t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_lstiter(t_list *lst, void (*f)(void *));
 
 #endif
