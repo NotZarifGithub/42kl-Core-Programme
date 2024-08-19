@@ -1,31 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_str.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/16 22:13:38 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/08/16 22:13:39 by mabd-ram         ###   ########.fr       */
+/*   Created: 2024/06/11 13:02:12 by mabd-ram          #+#    #+#             */
+/*   Updated: 2024/06/20 14:33:35 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "./includes/libft.h" 
-
-int print_str(char *str)
+void	ft_bzero(void *str, size_t len)
 {
-  int i;
-
-  i = 0;
-  if (str == NULL)   
-  {
-    write(1, "(null)", 6);
-    return (6);
-  }
-  while (str[i] != '\0') 
-  {
-    write(1, str[i], 1); 
-    i++;
-  }
-  return (i);
+	ft_memset(str, 0, len);
 }

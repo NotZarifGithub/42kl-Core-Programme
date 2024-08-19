@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_str.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/16 22:13:38 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/08/16 22:13:39 by mabd-ram         ###   ########.fr       */
+/*   Created: 2024/06/11 13:03:12 by mabd-ram          #+#    #+#             */
+/*   Updated: 2024/06/25 21:23:14 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "./includes/libft.h" 
-
-int print_str(char *str)
+void	*ft_memset(void *str, int c, size_t len)
 {
-  int i;
+	unsigned char	*p;
 
-  i = 0;
-  if (str == NULL)   
-  {
-    write(1, "(null)", 6);
-    return (6);
-  }
-  while (str[i] != '\0') 
-  {
-    write(1, str[i], 1); 
-    i++;
-  }
-  return (i);
+	p = (unsigned char *)str;
+	while (len > 0)
+	{
+		*p = (unsigned char)c;
+		p++;
+		len--;
+	}
+	return (str);
 }
+
+/*int main(void)
+{
+	char str1[] = "I love Kanye West."; 
+	ft_memset(str1, '#', 5);
+	printf("%s\n", str1);
+	return (0);
+}*/
