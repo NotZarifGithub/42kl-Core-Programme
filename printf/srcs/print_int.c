@@ -10,19 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#inclule "./includes/printf.h"
+#include "../libft/libft.h"
+#include "../includes/ft_printf.h"
 
-int print_int(int n)
+int	print_int(int n)
 {
-  int len;
-  char *num;
+	int		len;
+	char	*num;
 
-  len = 0;
-  num = ft_itoa(n);
-  len = ft_printstr(num);
-  free(num);
-  return len;
+	len = 0;
+	num = ft_itoa(n);
+	len = print_str(num);
+	free(num);
+	return (len);
 }
 
 /*

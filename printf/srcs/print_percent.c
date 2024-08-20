@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "../includes/ft_printf.h"
 
-int print_percent(void)
+int	print_percent(void)
 {
-  write(1, "%", 1);
-  return (1);
+	write(1, "%", 1);
+	return (1);
 }
