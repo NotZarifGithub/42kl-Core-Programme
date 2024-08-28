@@ -23,12 +23,8 @@
 # endif
 
 size_t	ft_strlen(char *str);
-char	*ft_strrchr(const char *str, int c);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
-char	*ft_strdup(const char *str);
-size_t	ft_strlcpy(char *dest, const char *src, size_t n);
-size_t	ft_strlcat(char *dest, const char *src, size_t n);
-char	*ft_strjoin(const char *s1, char const *s2);
+char	*ft_strchr(const char *str, int c);
+char    *ft_strjoin(const char *str1, const char *str2);
 char	*ft_extract_line(char *left_str);
 char	*ft_update_str(char *left_str);
 char	*ft_read_str(int fd, char *left_str);
