@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 20:12:41 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/08/28 13:23:39 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/08/28 15:58:41 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # endif
 
 size_t	ft_strlen(char *str);
-char	*ft_strchr(const char *str, int c);
-char	*ft_strjoin(const char *str1, const char *str2);
+char	*ft_strchr(char *str, int c);
+char	*ft_strjoin(char *str1, char *str2);
 char	*ft_extract_line(char *left_str);
 char	*ft_update_str(char *left_str);
 char	*ft_read_str(int fd, char *left_str);

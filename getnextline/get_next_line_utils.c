@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 13:18:15 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/08/28 13:28:38 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/08/28 16:44:19 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,13 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr(char *str, int c)
 {
 	if (str == NULL)
 		return (NULL);
 	if (c == '\0')
-		return ((char *)str + ft_strlen(str));
-	while (*str)
 	{
+		return ((char *)str + ft_strlen(str));
 		if (*str == (char)c)
 			return ((char *)(str));
 		str++;
@@ -37,31 +36,31 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(const char *str1, const char *str2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*result;
-	int		total_size;
-	int		i;
+	int		x;
 	int		y;
 
-	i = 0;
-	total_size = ft_strlen(str1) + ft_strlen(str2);
-	result = malloc(sizeof(char) * (total_size + 1));
-	if (!str1 || !str2 || !result)
+	if (!s1)
+	{
+		s1 = (char *)malloc(1 * sizeof(char));
+		s1[0] = '\0';
+	}
+	if (!s1 || !s2)
 		return (NULL);
-	while (str1[i] != '\0')
-	{
-		result[i] = str1[i];
-		i++;
-	}
+	result = malloc(sizeof(char) *((ft_strlen(s1) + ft_strlen(s2)) + 1));
+	if (result == NULL)
+		return (NULL);
+	x = -1;
 	y = 0;
-	while (str2[y] != '\0')
-	{
-		result[i] = str2[y];
-		i++;
-		j++;
-	}
-	result[total_size] = '\0';
+	if (s1)
+		while (s1[++x] != '\0')
+			result[x] = s1[x];
+	while (s2[y] != '\0')
+		result[x++] = s2[y++];
+	result[ft_strlen(s1) + ft_strlen(s2)] = '\0';
+	free(s1);
 	return (result);
 }
 
