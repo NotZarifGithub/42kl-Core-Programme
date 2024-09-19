@@ -22,16 +22,17 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strchr(char *str, int c)
+char	*ft_strchr(char *s, int c)
 {
-	if (str == NULL)
+	if (s == NULL)
 		return (NULL);
 	if (c == '\0')
+		return ((char *)&s[ft_strlen(s)]);
+	while (*s != '\0')
 	{
-		return ((char *)str + ft_strlen(str));
-		if (*str == (char)c)
-			return ((char *)(str));
-		str++;
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
 	}
 	return (NULL);
 }
