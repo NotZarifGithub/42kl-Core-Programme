@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 13:18:15 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/08/28 16:44:19 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/09/20 20:23:32 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strchr(char *s, int c)
+char	*ft_strchr(char *str, int c)
 {
-	if (s == NULL)
+	if (str == NULL)
 		return (NULL);
 	if (c == '\0')
-		return ((char *)&s[ft_strlen(s)]);
-	while (*s != '\0')
+		return ((char *)str + ft_strlen(str));
+	while (*str)
 	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
+		if (*str == (char)c)
+			return ((char *)(str));
+		str++;
 	}
 	return (NULL);
 }
