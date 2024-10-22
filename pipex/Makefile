@@ -10,45 +10,49 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME    = pipex
+CC   	  = gcc
+CFLAGS  = -Wall -Wextra -Werror
+SRC_DIR = srcs/
+OBJ_DIR = obj/
+INCLUDE_DIR = inlcudes/
+SRC         = $(wildcard $(SRC_DIR)/*.c)
+OBJ         = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+LIBFT       = $(LIBFT_DIR)/libft.a
+INCLUDE     = -I $(INCLUDE_DIR) -I $(LIBFT_DIR)
 
-SRCS = ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
-ft_isprint.c ft_memcpy.c ft_memmove.c ft_memset.c ft_strlcpy.c ft_strlen.c \
-ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c \
-ft_memchr.c ft_memcmp.c ft_atoi.c ft_strnstr.c ft_calloc.c ft_strdup.c ft_substr.c \
-ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
-ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
+all         = $(LIBFT) $(NAME)
 
-BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
-ft_lstclear.c ft_lstiter.c ft_lstmap.c
+# Default target
+all: $(LIBFT) $(NAME)
 
-OFILES = $(SRCS:.c=.o)
-BONUS_OFILES := $(BONUS:.c=.o)
+# Build the program
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
-CFLAGS = -Wall -Wextra -Werror
-CC = cc
-AR = ar rcs
+# Compile object files
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-all: $(NAME)
+# Create obj directory if it doesn't exist
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
-$(NAME): $(OFILES)
-	$(AR) $@ $^
+# Build the libft library
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+# Clean up object files
+clean:
+	rm -f $(OBJ)
+	$(MAKE) -C $(LIBFT_DIR) clean
 
+# Clean everything
 fclean: clean
 	rm -f $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
-clean:
-	rm -f $(OFILES) $(BONUS_OFILES)
-
+# Rebuild everything
 re: fclean all
 
-bonus: $(OFILES) $(BONUS_OFILES)
-	$(AR) $(NAME) $^
-
-$(BONUS_OFILES): %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re
