@@ -15,11 +15,11 @@
 void error_handler(int num) 
 {
   if (num == 1)  
-    ft_putstr_fd("Invalid number of arguments\n./pipex infile cmd cmd outfile\n");
+    ft_putstr_fd("Invalid number of arguments\n./pipex infile cmd cmd outfile\n", 2);
   exit(0);
 }
 
-void free_mem(char **array)
+void free_tab(char **array)
 {
   size_t i;
 
@@ -68,13 +68,13 @@ char *find_path(char *command, char **env)
     free(temp_dir);
     if (access(full_path, F_OK | X_OK) == 0)
     {
-      free_mem(dir);
+      free_tab(dir);
       return (full_path);
     }
     free(full_path);
     i++;
   }
-  free_mem(dir);
+  free_tab(dir);
   return (NULL);
 }
 

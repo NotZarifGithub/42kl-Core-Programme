@@ -10,12 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME    = pipex
-CC   	  = gcc
-CFLAGS  = -Wall -Wextra -Werror
-SRC_DIR = srcs/
-OBJ_DIR = obj/
-INCLUDE_DIR = inlcudes/
+NAME        = pipex
+CC   	      = gcc
+CFLAGS      = -Wall -Wextra -Werror
+SRC_DIR     = srcs/
+OBJ_DIR     = obj/
+INCLUDE_DIR = includes/
+LIBFT_DIR   = libft
 SRC         = $(wildcard $(SRC_DIR)/*.c)
 OBJ         = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 LIBFT       = $(LIBFT_DIR)/libft.a
@@ -45,6 +46,7 @@ $(LIBFT):
 # Clean up object files
 clean:
 	rm -f $(OBJ)
+	rm -rf $(OBJ_DIR)
 	$(MAKE) -C $(LIBFT_DIR) clean
 
 # Clean everything

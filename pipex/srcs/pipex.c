@@ -14,12 +14,12 @@
 
 void execute_command(char *command, char **env)
 {
-  char *str_cmd;
+  char **str_cmd;
   char *path_cmd;
 
   str_cmd = ft_split(command, ' ');
-  path_cmd = get_command_path(str_cmd, env);
-  if (execv(path_cmd, str_cmd, env) == -1)
+  path_cmd = find_path(str_cmd[0], env);
+  if (execve(path_cmd, str_cmd, env) == -1)
   {
     ft_putstr_fd("Failed to execute command", 2);
     perror(str_cmd[0]);
@@ -69,6 +69,6 @@ int main(int argc, char **argv, char **env)
     exit(1);
   }
   if (pid == 0)
-    child(argv, pipe_fd, env);
-  parent(argv, pipe_fd, env);
+    child_process(argv, pipe_fd, env);
+  parent_process(argv, pipe_fd, env);
 }
