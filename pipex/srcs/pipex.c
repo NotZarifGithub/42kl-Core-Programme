@@ -71,4 +71,6 @@ int main(int argc, char **argv, char **env)
   if (pid == 0)
     child_process(argv, pipe_fd, env);
   parent_process(argv, pipe_fd, env);
+  
+  return (0);
 }

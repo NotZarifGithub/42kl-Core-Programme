@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME        = pipex
-CC   	      = gcc
+CC    	    = gcc
 CFLAGS      = -Wall -Wextra -Werror
 SRC_DIR     = srcs/
 OBJ_DIR     = obj/
@@ -57,4 +57,8 @@ fclean: clean
 # Rebuild everything
 re: fclean all
 
+# Run the program with Valgrind
+valgrind: all
+	valgrind --leak-check=full --track-origins=yes ./$(NAME)
+	
 .PHONY: all clean fclean re

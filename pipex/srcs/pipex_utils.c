@@ -78,13 +78,13 @@ char *find_path(char *command, char **env)
   return (NULL);
 }
 
-int open_file(char *file_path, int input_output)
+int open_file(char *file_path, int input)
 {
   int fd;
 
-  if (input_output == 0)
+  if (input == 0)
     fd = open(file_path, O_RDONLY);
-  else if (input_output == 1)
+  else if (input == 1)
     fd = open(file_path, O_WRONLY | O_CREAT | O_TRUNC, 0777);  
   if (fd == -1)
   {
