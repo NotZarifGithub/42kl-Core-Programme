@@ -16,10 +16,10 @@ CFLAGS      = -Wall -Wextra -Werror
 SRC_DIR     = srcs/
 OBJ_DIR     = obj/
 INCLUDE_DIR = includes/
-LIBFT_DIR   = libft
+LIBFT_DIR   = libft/
 SRC         = $(wildcard $(SRC_DIR)/*.c)
 OBJ         = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-LIBFT       = $(LIBFT_DIR)/libft.a
+LIBFT       = $(LIBFT_DIR)libft.a
 INCLUDE     = -I $(INCLUDE_DIR) -I $(LIBFT_DIR)
 
 all         = $(LIBFT) $(NAME)
@@ -29,7 +29,7 @@ all: $(LIBFT) $(NAME)
 
 # Build the program
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ $(LIBFT) -o $(NAME)
 
 # Compile object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
