@@ -1,29 +1,46 @@
-#include <mlx.h>
-#include <stddef.h>
-#include <stdlib.h>
+#include "../includes/so_long.h"
+
+int close_window(t_data *game)
+{
+    if (game->mlx_window)
+        mlx_destroy_window(game->mlx_connection, game->mlx_window);
+    if (game->mlx_connection)
+    {
+        mlx_destroy_display(game->mlx_connection);
+        free(game->mlx_connection);
+    }
+    exit(0);
+    return (0); 
+}
+
+int handle_key(int keycode, t_data *game)
+{
+    if (keycode == ESC_KEY | keycode == Q)
+        close_window(game);
+    return (0);
+}
 
 int main(void)
 {
-    void    *mlx_connection;
-    void    *mlx_window;    
+    t_data game;
 
-    mlx_connection = mlx_init();
-    if (!mlx_connection)
+    game.mlx_connection = mlx_init();
+    if (!game.mlx_connection)
         return (1);
-    mlx_window = mlx_new_window(mlx_connection, 600, 500, "test");
-    if (!mlx_window)
+    game.mlx_window = mlx_new_window(game.mlx_connection, 600, 500, "test");
+    if (!game.mlx_window)
     {
-        mlx_destroy_display(mlx_connection);
-        free(mlx_connection);
+        mlx_destroy_display(game.mlx_connection);
+        free(game.mlx_connection);
         return (1);
     }
 
-    mlx_loop(mlx_connection);
+    mlx_hook(game.mlx_window, 2, 1L<<0, ((int (*)())handle_key), &game);
+    mlx_hook(game.mlx_window, 17, 0, (int (*)())close_window, &game);
 
-    mlx_destroy_window(mlx_connection, mlx_window);
-    mlx_destroy_display(mlx_connection);
-  
-    free(mlx_connection);
+    mlx_loop(game.mlx_connection);
+
+    free(game.mlx_connection);
     return (0);
 }
 
