@@ -12,65 +12,71 @@
 
 #include "../includes/pipex.h" 
 
-void execute_command(char *command, char **env)
+void	execute_command(char *command, char **env)
 {
-  char **str_cmd;
-  char *path_cmd;
+	char	**str_cmd;
+	char	*path_cmd;
 
-  str_cmd = ft_split(command, ' ');
-  path_cmd = find_path(str_cmd[0], env);
-  if (execve(path_cmd, str_cmd, env) == -1)
-  {
-    ft_putstr_fd("Failed to execute command", 2);
-    perror(str_cmd[0]);
-    free_tab(str_cmd);
-    exit(0);
-  }
+	str_cmd = ft_split(command, ' ');
+	path_cmd = find_path(str_cmd[0], env);
+	if (execve(path_cmd, str_cmd, env) == -1)
+	{
+		ft_putstr_fd("Failed to execute command", 2);
+		perror(str_cmd[0]);
+		free_tab(str_cmd);
+		exit(0);
+	}
 }
 
-void child_process(char **argv, int *pipe_fd, char **env)
+void	child_process(char **argv, int *pipe_fd, char **env)
 {
-  int fd;
+	int	fd;
 
-  fd = open_file(argv[1], 0);
-  dup2(fd, 0);
-  dup2(pipe_fd[1], 1);
-  close(pipe_fd[0]);
-  execute_command(argv[2], env);
+	fd = open_file(argv[1], 0);
+	dup2(fd, 0);
+	dup2(pipe_fd[1], 1);
+	close(pipe_fd[0]);
+	execute_command(argv[2], env);
 }
 
-void parent_process(char **argv, int *pipe_fd, char **env)
+void	parent_process(char **argv, int *pipe_fd, char **env)
 {
-  int fd;
+	int	fd;
 
-  fd = open_file(argv[4], 1);
-  dup2(fd, 1);
-  dup2(pipe_fd[0], 0);
-  close(pipe_fd[1]);
-  execute_command(argv[3], env);
+	fd = open_file(argv[4], 1);
+	dup2(fd, 1);
+	dup2(pipe_fd[0], 0);
+	close(pipe_fd[1]);
+	execute_command(argv[3], env);
 }
 
-int main(int argc, char **argv, char **env)
+int	main(int argc, char **argv, char **env)
 {
-  int pipe_fd[2];
-  pid_t pid;
+	int		pipe_fd[2];
+	pid_t	pid;
 
-  if (argc != 5)
-    error_handler(1); 
-  if (pipe(pipe_fd) < 0)
-  {
-    perror("Failed to create pipe");
-    exit(1);
-  }
-  pid = fork();
-  if (pid < 0)
-  {
-    perror("Fork fail");
-    exit(1);
-  }
-  if (pid == 0)
-    child_process(argv, pipe_fd, env);
-  parent_process(argv, pipe_fd, env);
-  
-  return (0);
+	if (argc != 5)
+		error_handler(1);
+	if (pipe(pipe_fd) < 0)
+	{
+		perror("Failed to create pipe");
+		exit(1);
+	}
+	pid = fork();
+	if (pid < 0)
+	{
+		perror("Fork fail");
+		exit(1);
+	}
+	if (pid == 0)
+		child_process(argv, pipe_fd, env);
+	parent_process(argv, pipe_fd, env);
+	return (0);
 }
+
+/* TEST CASES 
+ * ./pipex input.txt "cat" "wc -l" output_pipex.txt
+ * ./pipex input.txt "grep 42" "wc -l" output_pipex.txt
+ * ./pipex input.txt "sort" "tac" output.txt
+ * ./pipex input.txt "tac" "wc -l" output.txt
+*/

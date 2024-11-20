@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME        = pipex
-CC    	    = gcc
+CC          = gcc
 CFLAGS      = -Wall -Wextra -Werror
 SRC_DIR     = srcs/
 OBJ_DIR     = obj/
@@ -29,7 +29,7 @@ all: $(LIBFT) $(NAME)
 
 # Build the program
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 # Compile object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
