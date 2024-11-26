@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 02:06:33 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/11/27 02:06:34 by mabd-ram         ###   ########.fr       */
+/*   Created: 2024/06/13 16:09:48 by mabd-ram          #+#    #+#             */
+/*   Updated: 2024/06/21 17:53:13 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "../includes/so_long.h"
-
-int	main(int argc, char **argv)
+void	ft_putnbr_fd(int n, int fd)
 {
-	t_data	data;
+	char	c;
 
-	if (argc == 2)
+	if (n == -2147483648)
 	{
-		init_map(argv[1], &data);
-		init(&data);
-		init_window(&data);
-		setup_and_loop_images(&data);
-		if (data.map.map)
-			ft_free(data.map.map);
+		write(fd, "-2147483648", 11);
+		return ;
 	}
-	return (0);
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		n = -n;
+	}
+	if (n >= 10)
+		ft_putnbr_fd(n / 10, fd);
+	c = n % 10 + '0';
+	write(fd, &c, 1);
 }

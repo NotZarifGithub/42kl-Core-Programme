@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 02:06:33 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/11/27 02:06:34 by mabd-ram         ###   ########.fr       */
+/*   Created: 2024/06/13 15:24:25 by mabd-ram          #+#    #+#             */
+/*   Updated: 2024/06/20 19:18:18 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_putstr_fd(char *s, int fd)
 {
-	t_data	data;
+	size_t	len;
+	size_t	i;
 
-	if (argc == 2)
+	if (!s)
+		return ;
+	if (fd < 0)
+		return ;
+	len = ft_strlen(s);
+	i = 0;
+	while (len > i)
 	{
-		init_map(argv[1], &data);
-		init(&data);
-		init_window(&data);
-		setup_and_loop_images(&data);
-		if (data.map.map)
-			ft_free(data.map.map);
+		write(fd, &s[i], 1);
+		i++;
 	}
-	return (0);
 }

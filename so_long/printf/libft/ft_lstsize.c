@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 02:06:33 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/11/27 02:06:34 by mabd-ram         ###   ########.fr       */
+/*   Created: 2024/06/24 18:13:41 by mabd-ram          #+#    #+#             */
+/*   Updated: 2024/06/26 03:52:51 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_lstsize(t_list *lst)
 {
-	t_data	data;
+	size_t	i;
 
-	if (argc == 2)
+	i = 0;
+	while (lst)
 	{
-		init_map(argv[1], &data);
-		init(&data);
-		init_window(&data);
-		setup_and_loop_images(&data);
-		if (data.map.map)
-			ft_free(data.map.map);
+		lst = lst->next;
+		i++;
 	}
-	return (0);
+	return (i);
 }
+
+/*int main(void)
+{
+	t_list *head = ft_lstnew("A");
+	head->next = ft_lstnew("B");
+	head->next->next = ft_lstnew("C");
+
+	t_list *current = head;
+	printf("Node size: %d ", ft_lstsize(current));
+	return (0);
+}*/

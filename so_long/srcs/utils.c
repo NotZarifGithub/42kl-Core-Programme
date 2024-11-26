@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 02:06:33 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/11/27 02:06:34 by mabd-ram         ###   ########.fr       */
+/*   Created: 2024/11/27 02:06:40 by mabd-ram          #+#    #+#             */
+/*   Updated: 2024/11/27 02:06:43 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	main(int argc, char **argv)
+// Updated ft_free function
+void	ft_free(char **array)
 {
-	t_data	data;
+	int	i;
 
-	if (argc == 2)
+	if (array == NULL)
+		return ;
+	i = 0;
+	while (array[i])
 	{
-		init_map(argv[1], &data);
-		init(&data);
-		init_window(&data);
-		setup_and_loop_images(&data);
-		if (data.map.map)
-			ft_free(data.map.map);
+		free(array[i]);
+		i++;
 	}
-	return (0);
+	free(array);
 }

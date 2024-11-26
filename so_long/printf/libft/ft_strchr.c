@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 02:06:33 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/11/27 02:06:34 by mabd-ram         ###   ########.fr       */
+/*   Created: 2024/06/05 18:39:04 by mabd-ram          #+#    #+#             */
+/*   Updated: 2024/06/20 15:48:33 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "../includes/so_long.h"
-
-int	main(int argc, char **argv)
+char	*ft_strchr(const char *str, int c)
 {
-	t_data	data;
-
-	if (argc == 2)
+	if (c == '\0')
+		return ((char *)str + ft_strlen(str));
+	while (*str)
 	{
-		init_map(argv[1], &data);
-		init(&data);
-		init_window(&data);
-		setup_and_loop_images(&data);
-		if (data.map.map)
-			ft_free(data.map.map);
+		if (*str == (char)c)
+			return ((char *)(str));
+		str++;
 	}
-	return (0);
+	return (NULL);
 }
+
+/*int main(void)
+{
+	const char *str1;
+	unsigned char c;
+	char *address;
+
+	str1 = "I love Kanye West.";
+	c = 'K';
+	address = ft_strchr(str1, c);
+	printf("%s", address);
+	return (0);
+}*/

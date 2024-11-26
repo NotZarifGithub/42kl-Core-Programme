@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 02:06:33 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/11/27 02:06:34 by mabd-ram         ###   ########.fr       */
+/*   Created: 2024/06/05 16:48:56 by mabd-ram          #+#    #+#             */
+/*   Updated: 2024/06/21 16:33:34 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "../includes/so_long.h"
-
-int	main(int argc, char **argv)
+size_t	ft_strlen(const char *str)
 {
-	t_data	data;
+	int	i;
 
-	if (argc == 2)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		init_map(argv[1], &data);
-		init(&data);
-		init_window(&data);
-		setup_and_loop_images(&data);
-		if (data.map.map)
-			ft_free(data.map.map);
+		i++;
 	}
-	return (0);
+	return (i);
 }
+
+/*int main(void)
+{
+	const char *str;
+	int len;
+	
+	str = "I love Kanye West.";
+	len =	ft_strlen(str);
+	printf("The length of the string %s is %d", str, len);
+	return (0);
+}*/

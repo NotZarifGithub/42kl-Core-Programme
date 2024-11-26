@@ -19,6 +19,7 @@
 # include <stddef.h>
 # include <stdint.h>
 # include <limits.h>
+# include <stdarg.h>
 
 /* struct */
 
@@ -66,7 +67,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t u);
 char	*ft_strnstr(const char *hay, const char *needle, size_t n);
 int		ft_atoi(const char *str);
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
-char	*ft_strjoin(const char *s1, char const *s2);
+char	*ft_strjoin(char *s1, char const *s2);
 char	*ft_strdup(const char *str);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 char	*ft_strtrim(const char *s1, const char *set);
@@ -85,5 +86,18 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+/* printf */
+
+int		print_char(int c);
+int		print_str(char *str);
+int		print_char(int c);
+int		print_ptr(unsigned long long ptr);
+int		print_int(int n);
+int		print_uint(unsigned int n);
+int		print_hex(unsigned int num, const char format);
+int		print_percent(void);
+int		formats(va_list args, const char format);
+int		ft_printf(const char *format, ...);
 
 #endif

@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 02:06:33 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/11/27 02:06:34 by mabd-ram         ###   ########.fr       */
+/*   Created: 2024/11/27 02:06:18 by mabd-ram          #+#    #+#             */
+/*   Updated: 2024/11/27 02:06:19 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	main(int argc, char **argv)
+void	find_player_start(t_data *data)
 {
-	t_data	data;
+	int	row;
+	int	column;
 
-	if (argc == 2)
+	row = 0;
+	while (data->map.map[row])
 	{
-		init_map(argv[1], &data);
-		init(&data);
-		init_window(&data);
-		setup_and_loop_images(&data);
-		if (data.map.map)
-			ft_free(data.map.map);
+		column = 0;
+		while (data->map.map[row][column])
+		{
+			if (data->map.map[row][column] == 'P')
+			{
+				data->player.x = row;
+				data->player.y = column;
+				return ;
+			}
+			column++;
+		}
+		row++;
 	}
-	return (0);
 }
