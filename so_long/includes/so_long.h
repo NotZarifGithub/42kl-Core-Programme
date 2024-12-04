@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 02:19:07 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/11/27 02:19:10 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:32:47 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,15 @@
 # define LEFT 3
 
 //Images settings
-# define IMAGE_SIZE 40
+# define IMAGE_SIZE 32
 
 //Images paths
-# define TILES "images/tiles.xpm"
-# define COIN "images/coin1.xpm"
-# define GROUND "images/ground.xpm"
+# define COIN "images/coin.xpm"
 # define PLAYER "images/player.xpm"
 # define WALL "images/wall.xpm"
-# define CHEST "images/chest_locked.xpm"
+# define CHEST "images/portal.xpm"
 # define OPP "images/foe.xpm"
+# define GROUND "images/ground.xpm"
 
 //Map Data Structure
 typedef struct s_map
@@ -58,6 +57,7 @@ typedef struct s_map
 	char	**map;
 	int		total_collectibles;
 	int		total_line;
+    int     total_columns;
 }	t_map;
 
 //Image Data Structure
@@ -114,5 +114,6 @@ int		is_move_valid(int new_x, int new_y, t_data *data);
 void	update_position(int new_x, int new_y, t_data *data);
 void	move_player(t_data *data, int direction);
 void	find_player_start(t_data *data);
+void    check_map(t_data *data);
 
 #endif // ! SO_LONG_H

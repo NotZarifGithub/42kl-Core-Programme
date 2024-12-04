@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 02:06:11 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/11/27 02:06:12 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/12/03 16:39:51 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,19 @@ void	load_map_data(int row, t_data *data)
 	line = get_next_line(data->map.fd);
 	while (line != NULL)
 	{
-		data->map.map[row] = ft_calloc(ft_strlen(line) + 1, sizeof(char));
+		line = ft_strtrim(line, "\n");
+		if (!line)
+		{
+			ft_printf("Error: Memory allocation failed while trimming line.\n");
+			exit(0);
+		}
+		data->map.map[row] = ft_strdup(line);
+		free(line);
 		if (!data->map.map[row])
 		{
-			ft_free(data->map.map);
-			return ;
+			ft_printf("Error: Memory allocation failed.\n");
+			exit(0);
 		}
-		ft_strlcpy(data->map.map[row], line, ft_strlen(line) + 1);
-		free(line);
 		row++;
 		line = get_next_line(data->map.fd);
 	}
@@ -105,14 +110,4 @@ void	init_map(char *path, t_data *data)
 	close(data->map.fd);
 	count_collectibles(&data->map);
 	find_player_start(data);
-}
-
-/* Initialize the 'data' struct, including setting window size */
-void	init(t_data *data)
-{
-	if (data->map.map[0] != NULL)
-	{
-		data->window_height = data->map.total_line * IMAGE_SIZE;
-		data->window_width = (ft_strlen(data->map.map[0]) - 1) * IMAGE_SIZE;
-	}
 }

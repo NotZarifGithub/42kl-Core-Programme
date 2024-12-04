@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 02:06:33 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/12/03 14:31:13 by mabd-ram         ###   ########.fr       */
+/*   Created: 2024/12/02 18:06:42 by mabd-ram          #+#    #+#             */
+/*   Updated: 2024/12/04 01:15:07 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
-int	main(int argc, char **argv)
+void	check_map(t_data *data)
 {
-	t_data	data;
-
-	if (argc == 2)
-	{
-		init_map(argv[1], &data);
-		check_map(&data);
-		init(&data);
-		init_window(&data);
-		setup_and_loop_images(&data);
-		if (data.map.map)
-			ft_free(data.map.map);
-	}
-	return (0);
+	check_map_chars(data);
+	check_top_bottom_walls(data);
+	check_side_walls(data);
+	check_player_and_exit(data);
 }

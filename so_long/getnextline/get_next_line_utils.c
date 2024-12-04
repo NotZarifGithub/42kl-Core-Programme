@@ -6,12 +6,11 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 13:18:15 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/11/27 02:16:57 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/12/02 18:29:59 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "../libft/libft.h"
 
 /*
 size_t	ft_strlen(char *str)
@@ -25,7 +24,7 @@ size_t	ft_strlen(char *str)
 }
 */
 
-char	*ft_strchr(const char *str, int c)
+char	*gnl_strchr(const char *str, int c)
 {
 	if (str == NULL)
 		return (NULL);

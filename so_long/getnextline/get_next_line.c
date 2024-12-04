@@ -6,12 +6,11 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 13:18:00 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/08/28 13:18:02 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2024/12/02 18:28:37 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "../libft/libft.h"
 
 char	*ft_read_str(int fd, char *left_str)
 {
@@ -22,7 +21,7 @@ char	*ft_read_str(int fd, char *left_str)
 	if (!buffer)
 		return (NULL);
 	read_bytes = 1;
-	while ((!ft_strchr(left_str, '\n')) && (read_bytes != 0))
+	while ((!gnl_strchr(left_str, '\n')) && (read_bytes != 0))
 	{
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
 		if (read_bytes == -1)
