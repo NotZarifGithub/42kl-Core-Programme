@@ -13,7 +13,7 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <mlx.h>
+# include "../mlx/mlx.h" 
 # include "../libft/libft.h"
 # include "../getnextline/get_next_line.h"
 # include <stddef.h>
@@ -57,7 +57,7 @@ typedef struct s_map
 	char	**map;
 	int		total_collectibles;
 	int		total_line;
-    int     total_columns;
+	int		total_columns;
 }	t_map;
 
 //Image Data Structure
@@ -114,6 +114,10 @@ int		is_move_valid(int new_x, int new_y, t_data *data);
 void	update_position(int new_x, int new_y, t_data *data);
 void	move_player(t_data *data, int direction);
 void	find_player_start(t_data *data);
-void    check_map(t_data *data);
+void	check_map(t_data *data);
+void	check_map_chars(t_data *data);
+void	check_top_bottom_walls(t_data *data);
+void	check_side_walls(t_data *data);
+void	check_player_and_exit(t_data *data);
 
 #endif // ! SO_LONG_H
