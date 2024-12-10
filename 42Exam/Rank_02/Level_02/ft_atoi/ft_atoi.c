@@ -6,16 +6,19 @@ int ft_atoi(const char *str)
 
     result = 0;
     sign = 1;
-    if (*str == ' ' || (*str >= '9' && *str <= '13'))
+    while (*str == ' ' || *str = '\t' || *str = '\n' || *str = '\v' || *str = '\f' || *str == '\r')
         str++;
     if (*str == '-')
         sign = -1;
     if (*str == '-' || *str == '+')
         str++;
-    while (*str >= '0' && *str <= '9')
+    while (*str)
     {
-        result = result * 10 + (*str - '0');
-        str++;
+        if (*str >= '0' && *str <= '9')
+        {
+            result = result * 10 + (*str - '0');
+            str++;
+        }
     }
     return (result * sign);
 }
