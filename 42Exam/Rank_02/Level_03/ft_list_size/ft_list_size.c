@@ -1,14 +1,16 @@
-#include "ft_list.h"
+#inlcude "ft_list.h"
 
 int ft_list_size(t_list *begin_list)
 {
     int count;
+    t_list *current_node;
 
+    current_node = begin_list;
     count = 0;
-    while (begin_list)
+    while (current_node != NULL)
     {
         count++;
-        begin_list = begin_list->next;
+        current_node = current_node->next;
     }
     return (count);
 }

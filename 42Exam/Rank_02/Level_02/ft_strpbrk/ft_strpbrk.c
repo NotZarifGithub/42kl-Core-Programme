@@ -1,5 +1,5 @@
 
-char    *ft_strpbrk(const char *s1, const char *s2);
+char    *ft_strpbrk(const char *s1, const char *s2)
 {
     int i;
     int j;
@@ -10,8 +10,8 @@ char    *ft_strpbrk(const char *s1, const char *s2);
         j = 0;
         while (s2[j] != '\0')
         {
-            if (s2[j] == s1[i])
-                return (&s1[i]);
+            if (s1[i] == s2[j])
+                return ((char *)&s1[i]);
             j++;
         }
         i++;

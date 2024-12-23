@@ -1,19 +1,19 @@
 #include <unistd.h>
 
-int ft_atoi(const char *str)
+int ft_atoi(char *str)
 {
     int result;
     int sign;
 
-    result = 0;
     sign = 1;
-    while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\v' || *str == '\f' || *str == '\r')
+    result = 0;
+    while (*str == ' ' || (*str >= 9 && *str <= 13))
         str++;
     if (*str == '-')
         sign = -1;
     if (*str == '-' || *str == '+')
         str++;
-    while (*str >= '0' && *str <= '9') 
+    while (*str >= '0' && *str <= '9')
     {
         result = result * 10 + (*str - '0');
         str++;
@@ -21,7 +21,7 @@ int ft_atoi(const char *str)
     return (result * sign);
 }
 
-int is_prime(int num)
+int is_num_prime(int num)
 {
     int i;
 
@@ -39,35 +39,37 @@ int is_prime(int num)
     return (0);
 }
 
-void put_nbr(int n)
+void ft_putnbr(int n)
 {
-    int result;
+    char digit;
 
     if (n > 9)
-        put_nbr(n / 10);
-    result = n % 10 + '0';
-    write(1, &result, 1);
+        ft_putnbr(n / 10);
+    digit = n % 10 + '0'; 
+    write(1, &digit, 1);
 }
 
 int main(int argc, char **argv)
 {
-    int result;
     int num;
+    int total;
 
+    num = ft_atoi(argv[1]);
     if (argc == 2)
     {
-        result = 0;
-        num = ft_atoi(argv[1]);
-        while (num > 0)
+        total = 0;
+        while (num > 1)
         {
-            if (is_prime(num) == 1)
-                result += num;
+            if (is_num_prime(num))
+                total += num;
             num--;
         }
-        put_nbr(result);
+        ft_putnbr(total);
     }
-    else
-        put_nbr(0);
+    if (argc != 2)
+    {
+        ft_putnbr(0);
+    }
     write(1, "\n", 1);
     return (0);
 }

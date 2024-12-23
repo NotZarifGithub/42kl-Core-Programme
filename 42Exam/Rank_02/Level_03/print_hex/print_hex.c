@@ -1,21 +1,21 @@
 #include <unistd.h>
 
-int ft_atoi(const char *str)
+int ft_atoi(char *str)
 {
     int result;
     int sign;
 
-    sign = 0;
-    while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\v' || *str == '\f' || *str == '\r')
+    result = 0;
+    sign = 1;
+    while (*str == ' ' || (*str >= 9 && *str <= 13))
         str++;
     if (*str == '-')
-        sign = 1;
+        sign = -1;
     if (*str == '-' || *str == '+')
         str++;
-    while (*str)
+    while(*str >= '0' && *str <= '9')
     {
-        if (*str >= '0' && *str <= '9')
-            result = result * 10 + (*str - '0');
+        result = result * 10 + (*str - '0');
         str++;
     }
     return (result * sign);
@@ -33,8 +33,13 @@ void print_hex(int n)
 
 int main(int argc, char **argv)
 {
+    int num;
+
     if (argc == 2)
-        print_hex(ft_atoi(argv[1]));
+    {
+        num = ft_atoi(argv[1]);
+        print_hex(num);
+    }
     write(1, "\n", 1);
     return (0);
 }

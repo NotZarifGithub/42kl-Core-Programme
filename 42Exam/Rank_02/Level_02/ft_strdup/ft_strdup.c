@@ -3,14 +3,16 @@
 char    *ft_strdup(char *src)
 {
     int i;
-    int length;
+    int len;
     char *dup;
 
+    len = 0;
+    while (src[len] != '\0')
+        len++;
+    dup = malloc(len * sizeof(char) + 1);
+    if (!dup)
+        return (NULL);
     i = 0;
-    length = 0;
-    while (src[length] != '\0')
-        length++;
-    dup = (char *)malloc((length + 1) * sizeof(char));
     while (src[i] != '\0')
     {
         dup[i] = src[i];

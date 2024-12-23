@@ -1,35 +1,34 @@
 #include <unistd.h>
 
-void rstr_capitalizer(char *str)
-{
-    int i;
-
-    i = 0;
-    while (str[i])
-    {
-        if (str[i] >= 'A' && str[i] <= 'Z')
-            str[i] += 32;
-        if ((str[i] >= 'a' && str[i] <= 'z') && (str[i + 1] == ' ' || str[i + 1] == '\t' || str[i + 1] == '\0'))
-            str[i] -= 32;
-        write(1, &str[i++], 1);
-    }
-}
-
 int main(int argc, char **argv)
 {
     int i;
+    int j;
+    char pos;
 
-    if (argc == 1)
-        write(1, "\n", 1);
-    else
+    if (argc > 1)
     {
         i = 1;
-        while (argc > i)
+        while (argc > 1)
         {
-            rstr_capitalizer(argv[i]);
-            write(1, "\n", 1);
+            j = 0;
+            while (argv[i][j] != '\0')
+            {
+                if (argv[i][j] >= 'A' && argv[i][j] <= 'Z')
+                    pos = argv[i][j] + 32;
+                else
+                    pos = argv[i][j];
+                if ((argv[i][j] >= 'a' && argv[i][j] <= 'z') && (argv[i][j + 1] == ' ' || argv[i][j + 1] == '\t' || argv[i][j + 1] == '\0'))
+                    pos = argv[i][j] - 32;
+                write(1, &pos, 1);
+                j++;
+            }
             i++;
+            argc--;
+            write(1, "\n", 1);
         }
     }
+    else
+        write(1, "\n", 1);
     return (0);
 }
