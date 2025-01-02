@@ -1,4 +1,4 @@
-#inlcude <unistd.h>
+#include <unistd.h>
 
 int main(int argc, char **argv)
 {
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
             while (start <= end)
             {
                 write(1, &argv[1][start], 1);
-                start++
+                start++;
             }
             if (flag != 0)
                 write(1, " ", 1);

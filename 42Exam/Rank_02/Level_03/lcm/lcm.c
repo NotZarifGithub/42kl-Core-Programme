@@ -1,7 +1,7 @@
 
 unsigned int    hcf(unsigned int a, unsigned int b)
 {
-    unsigned temp;
+    unsigned int temp;
 
     while (b != 0)
     {
