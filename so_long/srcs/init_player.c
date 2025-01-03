@@ -17,6 +17,8 @@ void	find_player_start(t_data *data)
 	int	row;
 	int	column;
 
+	data->player.moves = 0;
+	data->player.collectibles = 0;
 	row = 0;
 	while (data->map.map[row])
 	{
