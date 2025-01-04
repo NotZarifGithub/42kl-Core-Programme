@@ -75,8 +75,8 @@ int	main(int argc, char **argv, char **env)
 }
 
 /* TEST CASES 
- * ./pipex input.txt "cat" "wc -l" output_pipex.txt
- * ./pipex input.txt "grep 42" "wc -l" output_pipex.txt
+ * ./pipex input.txt "cat" "wc -l" output.txt
+ * ./pipex input.txt "grep 42" "wc -l" output.txt
  * ./pipex input.txt "sort" "tac" output.txt
  * ./pipex input.txt "tac" "wc -l" output.txt
 */
