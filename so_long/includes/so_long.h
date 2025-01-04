@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 02:19:07 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/12/03 14:32:47 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2025/01/04 14:21:13 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define LEFT 3
 
 //Images settings
-# define IMAGE_SIZE 64
+# define IMAGE_SIZE 32
 
 //Images paths
 # define COIN "images/coin.xpm"

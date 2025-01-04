@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 02:06:11 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/12/03 16:39:51 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2025/01/04 14:34:18 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,36 @@ int	get_line_number(char *path)
 }
 
 /* Copy each line of .ber file into 'data->map.map[row]' array */
+static	void	handle_error(t_data *data, int row)
+{
+	ft_printf("Error: Memory allocation failed.\n");
+	while (row-- > 0)
+		free(data->map.map[row]);
+	free(data->map.map);
+	exit(EXIT_FAILURE);
+}
+
 void	load_map_data(int row, t_data *data)
 {
 	char	*line;
+	char	*trimmed_line;
 
 	line = get_next_line(data->map.fd);
 	while (line != NULL)
 	{
-		line = ft_strtrim(line, "\n");
-		if (!line)
-		{
-			ft_printf("Error: Memory allocation failed while trimming line.\n");
-			exit(0);
-		}
-		data->map.map[row] = ft_strdup(line);
+		trimmed_line = ft_strtrim(line, "\n");
 		free(line);
+		if (!trimmed_line)
+		{
+			handle_error(data, row);
+		}
+		data->map.map[row] = ft_strdup(trimmed_line);
 		if (!data->map.map[row])
 		{
-			ft_printf("Error: Memory allocation failed.\n");
-			exit(0);
+			free(trimmed_line);
+			handle_error(data, row);
 		}
+		free(trimmed_line);
 		row++;
 		line = get_next_line(data->map.fd);
 	}
