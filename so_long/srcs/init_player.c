@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 02:06:18 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/11/27 02:06:19 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2025/01/03 14:52:16 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	find_player_start(t_data *data)
 	int	row;
 	int	column;
 
+	data->player.moves = 0;
+	data->player.collectibles = 0;
 	row = 0;
 	while (data->map.map[row])
 	{
