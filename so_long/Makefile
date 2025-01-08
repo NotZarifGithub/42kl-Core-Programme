@@ -40,7 +40,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 $(OBJ_DIR)/%.o: $(GETNEXTLINE_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-# Rule to build object directory
+# Rule to build object directory
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 

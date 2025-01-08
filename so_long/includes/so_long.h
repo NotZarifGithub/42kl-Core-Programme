@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 02:19:07 by mabd-ram          #+#    #+#             */
-/*   Updated: 2025/01/04 14:21:13 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2025/01/09 02:15:14 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_map
 	int		total_collectibles;
 	int		total_line;
 	int		total_columns;
+	int		exit_reachable;
 }	t_map;
 
 //Image Data Structure
@@ -119,5 +120,13 @@ void	check_map_chars(t_data *data);
 void	check_top_bottom_walls(t_data *data);
 void	check_side_walls(t_data *data);
 void	check_player_and_exit(t_data *data);
+void	init_map(char *path, t_data *data);
+int		check_collectibles(t_data *data, int *visited);
+int		check_exit(t_data *data, int *visited);
+int		check_for_collectibles(t_data *data);
+int		check_reachable(t_data *data);
+void	validate_map(t_data *data);
+void	flood_fill(t_data *data, int x, int y, int *visited);
+int		is_valid_cell(t_data *data, int x, int y, int *visited);
 
 #endif // ! SO_LONG_H

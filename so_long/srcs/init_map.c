@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 02:06:11 by mabd-ram          #+#    #+#             */
-/*   Updated: 2025/01/04 14:34:18 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2025/01/08 22:55:44 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,5 @@ void	init_map(char *path, t_data *data)
 	close(data->map.fd);
 	count_collectibles(&data->map);
 	find_player_start(data);
+	validate_map(data);
 }

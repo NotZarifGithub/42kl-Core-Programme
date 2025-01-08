@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 02:06:33 by mabd-ram          #+#    #+#             */
-/*   Updated: 2024/12/03 14:31:13 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2025/01/08 22:47:10 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 	{
 		init_map(argv[1], &data);
 		check_map(&data);
+		validate_map(&data);
 		init(&data);
 		init_window(&data);
 		setup_and_loop_images(&data);
