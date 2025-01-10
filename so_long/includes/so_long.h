@@ -40,7 +40,7 @@
 # define LEFT 3
 
 //Images settings
-# define IMAGE_SIZE 32
+# define IMAGE_SIZE 50 
 
 //Images paths
 # define COIN "images/coin.xpm"
