@@ -26,25 +26,34 @@ int	is_valid_cell(t_data *data, int x, int y, int *visited)
 }
 
 // Flood fill function to mark reachable areas from the player
+void	init_directions(int directions[4][2])
+{
+	directions[0][0] = 0;
+	directions[0][1] = 1;
+	directions[1][0] = 1;
+	directions[1][1] = 0;
+	directions[2][0] = 0;
+	directions[2][1] = -1;
+	directions[3][0] = -1;
+	directions[3][1] = 0;
+}
+
+// Flood fill function to mark reachable areas from the player
+
 void	flood_fill(t_data *data, int x, int y, int *visited)
 {
-	size_t	row_length;
+	int		directions[4][2];
 	int		direction_index;
 	int		new_x;
 	int		new_y;
-	int		directions[4][2];	
+	size_t	row_length;
 
-	directions[4][2] = {
-	{0, 1},
-	{0, -1},
-	{1, 0},
-	{-1, 0}
-	};
+	init_directions(directions);
 	row_length = ft_strlen(data->map.map[x]);
-	direction_index = 0;
 	if (!is_valid_cell(data, x, y, visited))
 		return ;
 	visited[x * row_length + y] = 1;
+	direction_index = 0;
 	while (direction_index < 4)
 	{
 		new_x = x + directions[direction_index][0];

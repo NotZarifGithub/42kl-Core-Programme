@@ -54,6 +54,7 @@ int	check_exit(t_data *data, int *visited)
 				visited[row * row_length + col] == 0)
 			{
 				ft_printf("The exit is unreachable due to an obstacle!\n");
+				free(visited);
 				return (0);
 			}
 			col++;
