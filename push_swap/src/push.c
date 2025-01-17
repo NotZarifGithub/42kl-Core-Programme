@@ -5,16 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 17:06:45 by mabd-ram          #+#    #+#             */
-/*   Updated: 2025/01/09 20:57:26 by mabd-ram         ###   ########.fr       */
+/*   Created: 2025/01/17 22:39:33 by mabd-ram          #+#    #+#             */
+/*   Updated: 2025/01/17 22:39:34 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void pa(t_list **stack_a, t_list **stack_b)
+/* push:
+*	Pushes the top element of src stack to the top of dest stack.
+*/
+void pa(t_stack **stack_a, t_stack **stack_b)
 {
-    t_list *temp;
+    t_stack *temp;
 
     if (!(*stack_b))
         return;
@@ -25,9 +28,9 @@ void pa(t_list **stack_a, t_list **stack_b)
     write(1, "pa\n", 3);
 }
 
-void pb(t_list **stack_a, t_list **stack_b)
+void pb(t_stack **stack_a, t_stack **stack_b)
 {
-    t_list *temp;
+    t_stack *temp;
 
     if (!(*stack_a))
         return;
@@ -37,3 +40,4 @@ void pb(t_list **stack_a, t_list **stack_b)
     *stack_b = temp;
     write(1, "pb\n", 3);
 }
+

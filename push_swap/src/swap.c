@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 17:06:41 by mabd-ram          #+#    #+#             */
-/*   Updated: 2025/01/09 18:50:18 by mabd-ram         ###   ########.fr       */
+/*   Created: 2025/01/17 22:41:06 by mabd-ram          #+#    #+#             */
+/*   Updated: 2025/01/17 22:41:07 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void sa(t_list **stack_a)
+void sa(t_stack **stack_a)
 {
-    t_list *temp;
+    t_stack *temp;
 
     if (!(*stack_a) || !((*stack_a)->next))
         return;
@@ -25,11 +25,11 @@ void sa(t_list **stack_a)
     write(1, "sa\n", 3);
 }
 
-void sb(t_list **stack_b)
+void sb(t_stack **stack_b)
 {
-    t_list *temp;
+    t_stack *temp;
 
-    if (!*stack_b || !((*stack_b)->next))
+    if (!(*stack_b) || !((*stack_b)->next))
         return;
     temp = *stack_b;
     *stack_b = (*stack_b)->next;
@@ -38,7 +38,7 @@ void sb(t_list **stack_b)
     write(1, "sb\n", 3);
 }
 
-void ss(t_list **stack_a, t_list **stack_b)
+void ss(t_stack **stack_a, t_stack **stack_b)
 {
     sa(stack_a);
     sb(stack_b);

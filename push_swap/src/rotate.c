@@ -5,17 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 17:06:49 by mabd-ram          #+#    #+#             */
-/*   Updated: 2025/01/09 21:23:56 by mabd-ram         ###   ########.fr       */
+/*   Created: 2025/01/17 22:39:56 by mabd-ram          #+#    #+#             */
+/*   Updated: 2025/01/17 22:39:58 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "push_swap.h"
 
-void ra(t_list **stack_a)
+void ra(t_stack **stack_a)
 {
-    t_list *temp;
-    t_list *last;
+    t_stack *temp;
+    t_stack *last;
 
     if (!(*stack_a) || !((*stack_a)->next))
         return;
@@ -27,10 +28,10 @@ void ra(t_list **stack_a)
     write(1, "ra\n", 3);
 }
 
-void rb(t_list **stack_b)
+void rb(t_stack **stack_b)
 {
-    t_list *temp;
-    t_list *last;
+    t_stack *temp;
+    t_stack *last;
 
     if (!(*stack_b) || !((*stack_b)->next))
         return;
@@ -42,9 +43,10 @@ void rb(t_list **stack_b)
     write(1, "rb\n", 3);
 }
 
-void rr(t_list **stack_a, t_list **stack_b)
+void rr(t_stack **stack_a, t_stack **stack_b)
 {
     ra(stack_a);
     rb(stack_b);
     write(1, "rr\n", 3);
 }
+

@@ -6,7 +6,7 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 02:06:11 by mabd-ram          #+#    #+#             */
-/*   Updated: 2025/01/08 22:55:44 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2025/01/10 11:46:00 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	get_line_number(char *path)
 	return (total_line);
 }
 
-/* Copy each line of .ber file into 'data->map.map[row]' array */
 static	void	handle_error(t_data *data, int row)
 {
 	ft_printf("Error: Memory allocation failed.\n");
@@ -47,6 +46,7 @@ static	void	handle_error(t_data *data, int row)
 	exit(EXIT_FAILURE);
 }
 
+/* Copy each line of .ber file into 'data->map.map[row]' array */
 void	load_map_data(int row, t_data *data)
 {
 	char	*line;

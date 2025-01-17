@@ -6,7 +6,7 @@
 #    By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/25 17:34:10 by mabd-ram          #+#    #+#              #
-#    Updated: 2024/06/26 03:49:42 by mabd-ram         ###   ########.fr        #
+#    Updated: 2025/01/09 15:58:01 by mabd-ram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,14 +46,6 @@ SRCS = ft_bzero.c \
        ft_putstr_fd.c \
        ft_putendl_fd.c \
        ft_putnbr_fd.c \
-       printf/ft_printf.c \
-       printf/print_char.c \
-       printf/print_int.c \
-       printf/print_hex.c \
-       printf/print_str.c \
-       printf/print_percent.c \
-       printf/print_ptr.c \
-       printf/print_uint.c
 
 BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
 ft_lstclear.c ft_lstiter.c ft_lstmap.c
