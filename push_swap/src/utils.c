@@ -48,28 +48,30 @@ void	exit_error(t_stack **stack_a, t_stack **stack_b)
 /* ft_atoi:
 *   Converts an alphanumeric string of characters into a long integer.
 */
-long int	ft_atoi(const char *str)
+long int ft_atol(const char *str)
 {
-	long int	nb;
-	int			isneg;
-	int			i;
+    long int nb;
+    int isneg;
+    int i;
 
-	nb = 0;
-	isneg = 1;
-	i = 0;
-	if (str[i] == '+')
-		i++;
-	else if (str[i] == '-')
-	{
-		isneg *= -1;
-		i++;
-	}
-	while (is_digit(str[i]))
-	{
-		nb = (nb * 10) + (str[i] - '0');
-		i++;
-	}
-	return (nb * isneg);
+    nb = 0;
+    isneg = 1;
+    i = 0;
+    while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+        i++;
+    if (str[i] == '+')
+        i++;
+    else if (str[i] == '-')
+    {
+        isneg *= -1;
+        i++;
+    }
+    while (str[i] >= '0' && str[i] <= '9')
+    {
+        nb = (nb * 10) + (str[i] - '0');
+        i++;
+    }
+    return (nb * isneg);
 }
 
 /* ft_putstr:

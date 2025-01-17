@@ -80,7 +80,7 @@ int         get_stack_size(t_stack *stack);
 /* Utils */
 
 void        free_stack(t_stack **stack);
-long int    ft_atoi(const char *str);
+long int    ft_atol(const char *str);
 void        ft_putstr(char *str);
 int         nb_abs(int nb);
 
@@ -90,10 +90,6 @@ void        exit_error(t_stack **stack_a, t_stack **stack_b);
 
 /* Input Check */
 
-int         is_correct_input(char **av);
-int         is_digit(char c);
-int         is_sign(char c);
-int         nbstr_cmp(const char *s1, const char *s2);
-
+int is_valid_input(char **args);
 t_stack *ft_lstlast(t_stack *lst);
 #endif

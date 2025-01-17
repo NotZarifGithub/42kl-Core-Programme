@@ -10,93 +10,111 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "push_swap.h"
 
 /* arg_is_number:
 *   Checks if the argument is a number. +1 1 and -1 are all valid numbers.
 *   Return: 1 if the argument is a number, 0 if not.
 */
-static int	arg_is_number(char *av)
-{
-	int	i;
-
-	i = 0;
-	if (is_sign(av[i]) && av[i + 1] != '\0')
-		i++;
-	while (av[i] && is_digit(av[i]))
-		i++;
-	if (av[i] != '\0' && !is_digit(av[i]))
-		return (0);
-	return (1);
-}
-
-/* have_duplicates:
-*   Checks if the argument list has duplicate numbers.
-*   Return: 1 if a duplicate is found, 0 if there are none.
+/* check_for_duplicates:
+*   Checks if there are any duplicate strings in the argument list.
+*   Returns 1 if duplicates are found, 0 otherwise.
 */
-static int	have_duplicates(char **av)
+static int check_for_duplicates(char **args)
 {
-	int	i;
-	int	j;
+    int i = 1;
+    int j;
 
-	i = 1;
-	while (av[i])
-	{
-		j = 1;
-		while (av[j])
-		{
-			if (j != i && nbstr_cmp(av[i], av[j]) == 0)
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
+    while (args[i])
+    {
+        j = 1;
+        while (args[j])
+        {
+            if (j != i)
+            {
+                // Compare the strings directly
+                int k = 0;
+                while (args[i][k] && args[j][k] && args[i][k] == args[j][k])
+                    k++;
+                
+                // If both strings are of the same length and characters match, they're equal
+                if (args[i][k] == '\0' && args[j][k] == '\0')
+                    return 1;  // Return 1 if a duplicate is found
+            }
+            j++;
+        }
+        i++;
+    }
+    return 0;  // No duplicates found
 }
 
-/* arg_is_zero:
-*   Checks the argument is a 0 to avoid 0 +0 -0 duplicates
-*	and 0 0000 +000 -00000000 too.
-*   Return: 1 if the argument is a zero, 0 if it contains
-*	anything else than a zero.
+/* check_is_number:
+*   Checks if a string is a valid number (integer) with an optional sign.
+*   Returns 1 if valid, 0 if not.
 */
-static int	arg_is_zero(char *av)
+static int check_is_number(char *arg)
 {
-	int	i;
+    int i = 0;
 
-	i = 0;
-	if (is_sign(av[i]))
-		i++;
-	while (av[i] && av[i] == '0')
-		i++;
-	if (av[i] != '\0')
-		return (0);
-	return (1);
+    // If the first character is a sign, skip it
+    if (arg[i] == '+' || arg[i] == '-')
+        i++;
+
+    // If the string is empty after the sign, it's not a valid number
+    if (arg[i] == '\0')
+        return 0;
+
+    // Check if all characters are digits
+    while (arg[i])
+    {
+        if (arg[i] < '0' || arg[i] > '9')  // Check if the character is not a digit
+            return 0;  // Invalid character
+        i++;
+    }
+    return 1;  // All characters are digits, so it's a valid number
 }
 
-/* is_correct_input:
-*   Checks if the given arguments are all numbers, without duplicates.
-*   Return: 1 if the arguments are valid, 0 if not.
+/* check_is_zero:
+*   Checks if the string represents zero (including +0, -0, 0000, etc.).
+*   Returns 1 if it's zero, 0 if not.
 */
-int	is_correct_input(char **av)
+static int check_is_zero(char *arg)
 {
-	int	i;
-	int	nb_zeros;
+    int i = 0;
 
-	nb_zeros = 0;
-	i = 1;
-	while (av[i])
-	{
-		if (!arg_is_number(av[i]))
-			return (0);
-		nb_zeros += arg_is_zero(av[i]);
-		i++;
-	}
-	if (nb_zeros > 1)
-		return (0);
-	if (have_duplicates(av))
-		return (0);
-	return (1);
+    // Skip the sign if it's there
+    if (arg[i] == '+' || arg[i] == '-')
+        i++;
+
+    // If the remaining string contains only zeros, it's considered "zero"
+    while (arg[i] == '0')
+        i++;
+
+    return (arg[i] == '\0');  // If we've reached the end, it's a valid zero
 }
+
+/* is_valid_input:
+*   Validates that the arguments are all valid numbers without duplicates, and contains at most one zero.
+*   Returns 1 if valid, 0 otherwise.
+*/
+int is_valid_input(char **args)
+{
+    int i = 1;
+    int zero_count = 0;
+
+    while (args[i])
+    {
+        if (!check_is_number(args[i]))  // Check if the argument is a valid number
+            return 0;
+        zero_count += check_is_zero(args[i]);  // Count how many arguments are zero
+        i++;
+    }
+
+    if (zero_count > 1)  // More than one zero is invalid
+        return 0;
+    if (check_for_duplicates(args))  // Check if there are duplicates
+        return 0;
+
+    return 1;  // All checks passed, valid input
+}
+
