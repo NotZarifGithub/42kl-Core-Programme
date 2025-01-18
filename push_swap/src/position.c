@@ -12,139 +12,120 @@
 
 #include "push_swap.h"
 
-/* get_position:
-*	Assigns a position to each element of a stack from top to bottom
-*	in ascending order.
-*	Example stack:
-*		value:		 3	 0	 9	 1
-*		index:		[3]	[1]	[4]	[2]
-*		position:	<0>	<1>	<2>	<3>
-*	This is used to calculate the cost of moving a certain number to
-*	a certain position. If the above example is stack b, it would cost
-*	nothing (0) to push the first element to stack a. However if we want to
-*	push the highest value, 9, which is in third position, it would cost 2 extra
-*	moves to bring that 9 to the top of b before pushing it to stack a.
-*/
-static void	get_position(t_stack **stack)
-{
-	t_stack	*tmp;
-	int		i;
+#include <limits.h>
 
-	tmp = *stack;
-	i = 0;
-	while (tmp)
-	{
-		tmp->pos = i;
-		tmp = tmp->next;
-		i++;
-	}
+/* assign_positions:
+*   Assigns position values to the nodes in the stack, starting from 0.
+*/
+static void assign_positions(t_stack **stack)
+{
+    t_stack *current_node;
+    int position;
+
+    current_node = *stack;
+    position = 0;
+    while (current_node)
+    {
+        current_node->position = position++;  // Assign position (position) to each node
+        current_node = current_node->next;
+    }
 }
 
-/* get_lowest_index_position:
-*	Gets the current position of the element with the lowest index
-*	within a stack.
-*/
-int	get_lowest_index_position(t_stack **stack)
-{
-	t_stack	*tmp;
-	int		lowest_index;
-	int		lowest_pos;
 
-	tmp = *stack;
-	lowest_index = INT_MAX;
-	get_position(stack);
-	lowest_pos = tmp->pos;
-	while (tmp)
-	{
-		if (tmp->index < lowest_index)
-		{
-			lowest_index = tmp->index;
-			lowest_pos = tmp->pos;
-		}
-		tmp = tmp->next;
-	}
-	return (lowest_pos);
+/* find_minimum_index_position:
+*   Finds and returns the position of the node with the smallest index in the stack.
+*/
+int find_minimum_index_position(t_stack **stack)
+{
+    t_stack *current_node;
+    int minimum_order;
+    int minimum_position;
+
+    current_node = *stack;
+    minimum_order = INT_MAX;
+    assign_positions(stack);  // Ensure positions are updated.
+    minimum_position = current_node->position;  // Get the position of the node with smallest order
+
+    // Traverse the stack to find the node with the minimum order.
+    while (current_node)
+    {
+        if (current_node->order < minimum_order)  // Check for smaller order (index)
+        {
+            minimum_order = current_node->order;
+            minimum_position = current_node->position;  // Return the position of the node with the smallest order
+        }
+        current_node = current_node->next;
+    }
+    return minimum_position;
 }
 
-/* get_target:
-*	Picks the best target position in stack A for the given index of
-*	an element in stack B. First checks if the index of the B element can
-*	be placed somewhere in between elements in stack A, by checking whether
-*	there is an element in stack A with a bigger index. If not, it finds the
-*	element with the smallest index in A and assigns that as the target position.
-*	--- Example:
-*		target_pos starts at INT_MAX
-*		B index: 3
-*		A contains indexes: 9 4 2 1 0
-*		9 > 3 && 9 < INT_MAX 	: target_pos updated to 9
-*		4 > 3 && 4 < 9 			: target pos updated to 4
-*		2 < 3 && 2 < 4			: no update!
-*	So target_pos needs to be the position of index 4, since it is
-*	the closest index.
-*	--- Example:
-*		target_pos starts at INT_MAX
-*		B index: 20
-*		A contains indexes: 16 4 3
-*		16 < 20					: no update! target_pos = INT_MAX
-*		4  < 20					: no update! target_pos = INT_MAX
-*		3  < 20					: no update! target_pos = INT_MAX
-*	... target_pos stays at INT MAX, need to switch strategies.
-*		16 < 20					: target_pos updated to 20
-*		4  < 20					: target_pos updated to 4
-*		3  < 20					: target_pos updated to 3
-*	So target_pos needs to be the position of index 3, since that is
-*	the "end" of the stack.
-*/
-static int	get_target(t_stack **a, int b_idx,
-								int target_idx, int target_pos)
-{
-	t_stack	*tmp_a;
 
-	tmp_a = *a;
-	while (tmp_a)
-	{
-		if (tmp_a->index > b_idx && tmp_a->index < target_idx)
-		{
-			target_idx = tmp_a->index;
-			target_pos = tmp_a->pos;
-		}
-		tmp_a = tmp_a->next;
-	}
-	if (target_idx != INT_MAX)
-		return (target_pos);
-	tmp_a = *a;
-	while (tmp_a)
-	{
-		if (tmp_a->index < target_idx)
-		{
-			target_idx = tmp_a->index;
-			target_pos = tmp_a->pos;
-		}
-		tmp_a = tmp_a->next;
-	}
-	return (target_pos);
+/* calculate_target_position:
+*   Calculates the best position in stack A for a node from stack B.
+*   It checks if the node from B can be placed in between two nodes in stack A.
+*   If no such position exists, it selects the position of the smallest index in A.
+*/
+static int calculate_target_position(t_stack **a, int b_order)
+{
+    t_stack *current_node_a;
+    int best_target_position;
+    int closest_higher_order;
+
+    current_node_a = *a;
+    best_target_position = -1;
+    closest_higher_order = INT_MAX;
+
+    // Look for a position where the element in B can fit between two nodes in A.
+    while (current_node_a)
+    {
+        if (current_node_a->order > b_order && current_node_a->order < closest_higher_order)
+        {
+            closest_higher_order = current_node_a->order;
+            best_target_position = current_node_a->position;  // Best position based on conditions
+        }
+        current_node_a = current_node_a->next;
+    }
+
+    // If no fitting position found, select the position of the smallest element in A.
+    if (best_target_position == -1)
+    {
+        current_node_a = *a;
+        while (current_node_a)
+        {
+            if (current_node_a->order < closest_higher_order)
+            {
+                closest_higher_order = current_node_a->order;
+                best_target_position = current_node_a->position;  // Smallest element's position
+            }
+            current_node_a = current_node_a->next;
+        }
+    }
+
+    return best_target_position;
 }
 
-/* get_target_position:
-*	Assigns a target position in stack A to each element of stack A.
-*	The target position is the spot the element in B needs to
-*	get to in order to be sorted correctly. This position will
-*	be used to calculate the cost of moving each element to
-*	its target position in stack A.
-*/
-void	get_target_position(t_stack **a, t_stack **b)
-{
-	t_stack	*tmp_b;
-	int		target_pos;
 
-	tmp_b = *b;
-	get_position(a);
-	get_position(b);
-	target_pos = 0;
-	while (tmp_b)
-	{
-		target_pos = get_target(a, tmp_b->index, INT_MAX, target_pos);
-		tmp_b->target_pos = target_pos;
-		tmp_b = tmp_b->next;
-	}
+/* assign_target_positions:
+*   Assigns a target position in stack A for each node in stack B.
+*   The target position is the spot in stack A where the node from B should go.
+*/
+void assign_target_positions(t_stack **a, t_stack **b)
+{
+    t_stack *current_node_b;
+    int target_position;
+
+    current_node_b = *b;
+    
+    // Ensure positions are updated for both stacks.
+    assign_positions(a);  // Assign positions for stack A
+    assign_positions(b);  // Assign positions for stack B
+
+    while (current_node_b)
+    {
+        // Calculate and assign the target position for each node in stack B
+        target_position = calculate_target_position(a, current_node_b->order);
+        current_node_b->target_position = target_position;  // Assign target position (target_position)
+        current_node_b = current_node_b->next;
+    }
 }
+

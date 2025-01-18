@@ -14,60 +14,58 @@
 
 #include "push_swap.h"
 
-/* get_cost:
-*	Calculates the cost of moving each element of stack B into the correct
-*	position in stack A.
-*	Two costs are calculated:
-*		cost_b represents the cost of getting the element to the top of the B stack
-*		cost_a represents the cost of getting to the right position in stack A.
-*	If the element is in the bottom half of the stack, the cost will be negative,
-*	if it is in the top half, the cost is positive. 
-*/
-void	get_cost(t_stack **stack_a, t_stack **stack_b)
+void calculate_move_cost(t_stack **a, t_stack **b)
 {
-	t_stack	*tmp_a;
-	t_stack	*tmp_b;
-	int		size_a;
-	int		size_b;
+    t_stack *current_a;
+    t_stack *current_b;
+    int size_a;
+    int size_b;
 
-	tmp_a = *stack_a;
-	tmp_b = *stack_b;
-	size_a = get_stack_size(tmp_a);
-	size_b = get_stack_size(tmp_b);
-	while (tmp_b)
-	{
-		tmp_b->cost_b = tmp_b->pos;
-		if (tmp_b->pos > size_b / 2)
-			tmp_b->cost_b = (size_b - tmp_b->pos) * -1;
-		tmp_b->cost_a = tmp_b->target_pos;
-		if (tmp_b->target_pos > size_a / 2)
-			tmp_b->cost_a = (size_a - tmp_b->target_pos) * -1;
-		tmp_b = tmp_b->next;
-	}
+    current_a = *a;
+    current_b = *b;
+    size_a = get_stack_size(current_a);
+    size_b = get_stack_size(current_b);
+
+    while (current_b)
+    {
+        current_b->cost_b = current_b->position;  // Initial cost based on position in stack B
+        if (current_b->position > size_b / 2)
+        {
+            current_b->cost_b = (size_b - current_b->position) * -1;  // Reverse the cost if it's closer to the bottom of stack B
+        }
+
+        current_b->cost_a = current_b->target_position;  // Initial cost based on target position in stack A
+        if (current_b->target_position > size_a / 2)
+        {
+            current_b->cost_a = (size_a - current_b->target_position) * -1;  // Reverse the cost if it's closer to the bottom of stack A
+        }
+
+        current_b = current_b->next;  // Move to the next element in stack B
+    }
+}
+void execute_move(t_stack **a, t_stack **b)
+{
+    t_stack *current_b;
+    int lowest_cost;
+    int best_cost_a;
+    int best_cost_b;
+    int total_cost;
+
+    current_b = *b;
+    lowest_cost = INT_MAX;  // Initialize with a very high value
+
+    while (current_b)
+    {
+        total_cost = abs(current_b->cost_a) + abs(current_b->cost_b);  // Calculate the total cost
+        if (total_cost < abs(lowest_cost))  // Compare with the lowest cost found so far
+        {
+            lowest_cost = total_cost;
+            best_cost_a = current_b->cost_a;  // Save the best cost for stack A
+            best_cost_b = current_b->cost_b;  // Save the best cost for stack B
+        }
+        current_b = current_b->next;  // Move to the next element in stack B
+    }
+    begin_move(a, b, best_cost_a, best_cost_b);  // Perform the best move
 }
 
-/* do_cheapest_move:
-*	Finds the element in stack B with the cheapest cost to move to stack A
-*	and moves it to the correct position in stack A.
-*/
-void	do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
-{
-	t_stack	*tmp;
-	int		cheapest;
-	int		cost_a;
-	int		cost_b;
 
-	tmp = *stack_b;
-	cheapest = INT_MAX;
-	while (tmp)
-	{
-		if (nb_abs(tmp->cost_a) + nb_abs(tmp->cost_b) < nb_abs(cheapest))
-		{
-			cheapest = nb_abs(tmp->cost_b) + nb_abs(tmp->cost_a);
-			cost_a = tmp->cost_a;
-			cost_b = tmp->cost_b;
-		}
-		tmp = tmp->next;
-	}
-	do_move(stack_a, stack_b, cost_a, cost_b);
-}

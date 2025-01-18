@@ -21,39 +21,39 @@
 
 typedef struct s_stack
 {
-    int             value;
-    int             index;
-    int             pos;
-    int             target_pos;
-    int             cost_a;
-    int             cost_b;
-    struct s_stack  *next;
+    int             data;           // Replaces 'value'
+    int             order;          // Replaces 'index'
+    int             position;       // Replaces 'pos'
+    int             target_position; // Replaces 'target_pos'
+    int             cost_a;    // Replaces 'cost_a'
+    int             cost_b;    // Replaces 'cost_b'
+    struct s_stack  *next;           // Replaces 'next'
 } t_stack;
 
 /* Initialization */
 
-t_stack     *fill_stack_values(int ac, char **av);
-void        assign_index(t_stack *stack_a, int ac);
+t_stack *fill_stack(int argc, char **argv);
+void        set_index(t_stack *stack_a, int ac);
 
 /* Sorting Algorithms */
 
-int         is_sorted(t_stack *stack);
-void        tiny_sort(t_stack **stack);
-void        sort(t_stack **stack_a, t_stack **stack_b);
+void	sort_3num(t_stack **stack);
+void	sort_large_stack(t_stack **a, t_stack **b);
+int	is_sorted_stack(t_stack *stack);
 
 /* Position */
 
-int         get_lowest_index_position(t_stack **stack);
-void        get_target_position(t_stack **stack_a, t_stack **stack_b);
+int find_minimum_index_position(t_stack **stack);
+void assign_target_positions(t_stack **a, t_stack **b);
 
 /* Cost */
 
-void        get_cost(t_stack **stack_a, t_stack **stack_b);
-void        do_cheapest_move(t_stack **stack_a, t_stack **stack_b);
+void        calculate_move_cost(t_stack **stack_a, t_stack **stack_b);
+void        execute_move(t_stack **stack_a, t_stack **stack_b);
 
 /* Calculate Move */
 
-void        do_move(t_stack **a, t_stack **b, int cost_a, int cost_b);
+void        begin_move(t_stack **a, t_stack **b, int cost_a, int cost_b);
 
 /* Operations */
 
@@ -71,25 +71,18 @@ void        rrb(t_stack **stack_b);
 
 /* Stack Functions */
 
-t_stack     *get_stack_bottom(t_stack *stack);
-t_stack     *get_stack_before_bottom(t_stack *stack);
 t_stack     *stack_new(int value);
-void        stack_add_bottom(t_stack **stack, t_stack *new);
 int         get_stack_size(t_stack *stack);
 
 /* Utils */
 
 void        free_stack(t_stack **stack);
 long int    ft_atol(const char *str);
-void        ft_putstr(char *str);
-int         nb_abs(int nb);
-
-/* Error */
-
+int         num_abs(int num);
 void        exit_error(t_stack **stack_a, t_stack **stack_b);
+t_stack *ft_lstlast(t_stack *lst);
 
 /* Input Check */
-
 int is_valid_input(char **args);
-t_stack *ft_lstlast(t_stack *lst);
+
 #endif

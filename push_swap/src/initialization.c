@@ -12,31 +12,33 @@
 
 #include "push_swap.h"
 
-/* fill_stack_values:
-*	Fills stack_a with the provided values.
-*	If the values are out of integer range, prints and error and exits the program.
-*/
-t_stack	*fill_stack_values(int ac, char **av)
+t_stack *fill_stack(int argc, char **argv)
 {
-	t_stack		*stack_a;
-	long int	nb;
-	int			i;
+    t_stack *stack_a;
+    t_stack *tail;
+    t_stack *new_node;
+    long int num;
+    int i;
 
-	stack_a = NULL;
-	nb = 0;
-	i = 1;
-	while (i < ac)
-	{
-		nb = ft_atol(av[i]);
-		if (nb > INT_MAX || nb < INT_MIN)
-			exit_error(&stack_a, NULL);
-		if (i == 1)
-			stack_a = stack_new((int)nb);
-		else
-			stack_add_bottom(&stack_a, stack_new((int)nb));
-		i++;
-	}
-	return (stack_a);
+    stack_a = NULL;
+    tail = NULL;
+    i = 1;
+    while (i < argc)
+    {
+        num = ft_atol(argv[i]);
+        if (num > INT_MAX || num < INT_MIN)
+            exit_error(&stack_a, NULL);
+        new_node = stack_new((int)num);
+        if (!new_node)
+            exit_error(&stack_a, NULL);
+        if (!stack_a)
+            stack_a = new_node;
+        else
+            tail->next = new_node;
+        tail = new_node;
+        i++;
+    }
+    return (stack_a);
 }
 
 /* assign_index:
@@ -47,31 +49,33 @@ t_stack	*fill_stack_values(int ac, char **av)
 *		indexes:		[1]	[2]	[4]	[3]
 *	The indexes are assigned from highest (stack_size) to lowest (1).
 */
-void	assign_index(t_stack *stack_a, int stack_size)
+void set_index(t_stack *list_a, int list_size)
 {
-	t_stack	*ptr;
-	t_stack	*highest;
-	int		value;
+    t_stack *node;
+    t_stack *max_node;
+    int current_value;
 
-	while (--stack_size > 0)
-	{
-		ptr = stack_a;
-		value = INT_MIN;
-		highest = NULL;
-		while (ptr)
-		{
-			if (ptr->value == INT_MIN && ptr->index == 0)
-				ptr->index = 1;
-			if (ptr->value > value && ptr->index == 0)
-			{
-				value = ptr->value;
-				highest = ptr;
-				ptr = stack_a;
-			}
-			else
-				ptr = ptr->next;
-		}
-		if (highest != NULL)
-			highest->index = stack_size;
-	}
+    while (--list_size > 0)
+    {
+        node = list_a;
+        current_value = INT_MIN;
+        max_node = NULL;
+        while (node)
+        {
+            if (node->data == INT_MIN && node->order == 0)  // Changed from 'value' to 'data' and 'index' to 'order'
+                node->order = 1;
+            if (node->data > current_value && node->order == 0)  // Changed from 'value' to 'data' and 'index' to 'order'
+            {
+                current_value = node->data;
+                max_node = node;
+                node = list_a;
+            }
+            else
+                node = node->next;
+        }
+        if (max_node != NULL)
+            max_node->order = list_size;  // Changed from 'index' to 'order'
+    }
 }
+
+

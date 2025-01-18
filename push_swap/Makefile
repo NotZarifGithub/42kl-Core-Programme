@@ -6,11 +6,11 @@ SRC_PATH = src/
 OBJ_PATH = obj/
 
 SRC		= main.c \
-		input_check.c input_check_utils.c \
+		input_check.c \
 		initialization.c \
 		stack.c \
 		swap.c push.c rotate.c reverse_rotate.c \
-		sort_tiny.c sort.c \
+		sort.c \
 		position.c cost.c do_move.c \
 		utils.c
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
