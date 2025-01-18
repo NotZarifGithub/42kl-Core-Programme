@@ -1,33 +1,49 @@
-CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra
-NAME	= push_swap
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra
+NAME = push_swap
 
+# Define paths
 SRC_PATH = src/
 OBJ_PATH = obj/
+INCLUDE_PATH = includes/
 
-SRC		= main.c \
-		input_check.c \
-		initialization.c \
-		stack.c \
-		swap.c push.c rotate.c reverse_rotate.c \
-		sort.c \
-		position.c cost.c do_move.c \
-		utils.c
-SRCS	= $(addprefix $(SRC_PATH), $(SRC))
-OBJ		= $(SRC:.c=.o)
-OBJS	= $(addprefix $(OBJ_PATH), $(OBJ))
-INCS	= -I ./includes/
+# Source files grouped by directories
+SRC = main.c \
+      cost/cost.c cost/do_move.c \
+      init/initialization.c \
+      input_check/input_check.c \
+      operations/push.c operations/reverse_rotate.c operations/rotate.c operations/swap.c \
+      position/position.c \
+      sorting/sort.c \
+      stack/stack.c \
+      utils.c
 
-all: $(OBJ_PATH) $(NAME) 
+# Object files (with directories under obj/)
+OBJ = $(addprefix $(OBJ_PATH), $(SRC:%.c=%.o))
 
+# Include directories
+INCS = -I $(INCLUDE_PATH)
+
+# Default target
+all: $(OBJ_PATH) $(NAME)
+
+# Rule to create directories
+$(OBJ_PATH):
+	@mkdir -p $(OBJ_PATH)
+	@mkdir -p $(OBJ_PATH)cost
+	@mkdir -p $(OBJ_PATH)init
+	@mkdir -p $(OBJ_PATH)input_check
+	@mkdir -p $(OBJ_PATH)operations
+	@mkdir -p $(OBJ_PATH)position
+	@mkdir -p $(OBJ_PATH)sorting
+	@mkdir -p $(OBJ_PATH)stack
+
+# Rule to compile .c files to .o files
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
 
-$(OBJ_PATH):
-	mkdir $(OBJ_PATH)
-
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean:
 	rm -rf $(OBJ_PATH)
@@ -37,41 +53,6 @@ fclean: clean
 
 re: fclean all
 
-test2:				$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-100 -n 2))
-					./push_swap $(ARG) | ./checker_linux $(ARG)
-					@echo -n "Instructions: "
-					@./push_swap $(ARG) | wc -l
+# Define phony targets
+.PHONY: all clean fclean re
 
-test3:				$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-100 -n 3))
-					./push_swap $(ARG) | ./checker_linux $(ARG)
-					@echo -n "Instructions: "
-					@./push_swap $(ARG) | wc -l
-
-test5:				$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-5000 -n 5))
-					./push_swap $(ARG) | ./checker_linux $(ARG)
-					@echo -n "Instructions: "
-					@./push_swap $(ARG) | wc -l
-
-test100:			$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-5000 -n 100))
-					./push_swap $(ARG) | ./checker_linux $(ARG)
-					@echo -n "Instructions: "
-					@./push_swap $(ARG) | wc -l
-
-test500:			$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-5000 -n 500))
-					./push_swap $(ARG) | ./checker_linux $(ARG)
-					@echo -n "Instructions: "
-					@./push_swap $(ARG) | wc -l
-
-test1000:			$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-5000 -n 1000))
-					./push_swap $(ARG) | ./checker_linux $(ARG)
-					@echo -n "Instructions: "
-					@./push_swap $(ARG) | wc -l
-
-
-.PHONY: all clean fclean re test2 test3 test5 test100 test500 test1000

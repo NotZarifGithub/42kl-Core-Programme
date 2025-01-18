@@ -6,11 +6,11 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 22:38:25 by mabd-ram          #+#    #+#             */
-/*   Updated: 2025/01/17 22:38:27 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2025/01/18 16:36:30 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 /* arg_is_number:
 *   Checks if the argument is a number. +1 1 and -1 are all valid numbers.

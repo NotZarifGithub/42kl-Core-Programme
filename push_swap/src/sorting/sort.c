@@ -6,12 +6,11 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 22:40:16 by mabd-ram          #+#    #+#             */
-/*   Updated: 2025/01/17 22:40:36 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2025/01/18 16:37:46 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 /* tiny_sort:
 *   Sorts a stack of 3 numbers in 2 or fewer moves. The sorting is done by order

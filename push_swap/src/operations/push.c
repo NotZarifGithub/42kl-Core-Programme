@@ -6,11 +6,11 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 22:39:33 by mabd-ram          #+#    #+#             */
-/*   Updated: 2025/01/17 22:39:34 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2025/01/18 16:36:42 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 /* push:
 *	Pushes the top element of src stack to the top of dest stack.

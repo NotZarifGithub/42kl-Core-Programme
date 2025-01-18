@@ -6,11 +6,11 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 22:37:09 by mabd-ram          #+#    #+#             */
-/*   Updated: 2025/01/17 22:37:15 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2025/01/18 16:35:34 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 static void	reverse_rotate_both(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
 {
