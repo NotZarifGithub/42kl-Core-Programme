@@ -6,57 +6,47 @@
 /*   By: mabd-ram <mabd-ram@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 22:39:43 by mabd-ram          #+#    #+#             */
-/*   Updated: 2025/01/18 16:36:50 by mabd-ram         ###   ########.fr       */
+/*   Updated: 2025/01/20 23:19:26 by mabd-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void rra(t_stack **stack_a)
+static void	rev_rotate(t_stack **stack)
 {
-    t_stack *last;
-    t_stack *second_last;
+	t_stack	*prev;
+	t_stack	*last;
 
-    if (!(*stack_a) || !(*stack_a)->next)
-        return;
-
-    last = *stack_a;
-    second_last = NULL;
-    while (last->next)
-    {
-        second_last = last;
-        last = last->next;
-    }
-    second_last->next = NULL;
-    last->next = *stack_a;
-    *stack_a = last;
-    write(1, "rra\n", 4);
+	if (!stack || !(*stack) || !(*stack)->next)
+		return ;
+	prev = NULL;
+	last = *stack;
+	while (last->next)
+	{
+		prev = last;
+		last = last->next;
+	}
+	if (prev)
+		prev->next = NULL;
+	last->next = *stack;
+	*stack = last;
 }
 
-void rrb(t_stack **stack_b)
+void	rra(t_stack **stack_a)
 {
-    t_stack *last;
-    t_stack *second_last;
-
-    if (!(*stack_b) || !(*stack_b)->next)
-        return;
-
-    last = *stack_b;
-    second_last = NULL;
-    while (last->next)
-    {
-        second_last = last;
-        last = last->next;
-    }
-    second_last->next = NULL;
-    last->next = *stack_b;
-    *stack_b = last;
-    write(1, "rrb\n", 4);
+	rev_rotate(stack_a);
+	write(1, "rra\n", 4);
 }
 
-void rrr(t_stack **stack_a, t_stack **stack_b)
+void	rrb(t_stack **stack_b)
 {
-    rra(stack_a);
-    rrb(stack_b);
-    write(1, "rr\n", 3);
+	rev_rotate(stack_b);
+	write(1, "rrb\n", 4);
+}
+
+void	rrr(t_stack **stack_a, t_stack **stack_b)
+{
+	rev_rotate(stack_a);
+	rev_rotate(stack_b);
+	write(1, "rrr\n", 4);
 }
